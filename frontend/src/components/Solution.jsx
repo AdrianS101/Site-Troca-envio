@@ -18,8 +18,8 @@ const Solution = () => {
           <div className="order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.pexels.com/photos/32952173/pexels-photo-32952173.jpeg"
-                alt="Mulher usando locker"
+                src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/w4gzu6y8_2%20img.jpg"
+                alt="Pessoa usando locker TROCAENVIO"
                 className="w-full h-auto"
               />
             </div>
