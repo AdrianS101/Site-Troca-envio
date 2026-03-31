@@ -10,7 +10,7 @@ const Footer = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-12 w-auto"
+              className="h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
             <p className="text-gray-300 leading-relaxed">
