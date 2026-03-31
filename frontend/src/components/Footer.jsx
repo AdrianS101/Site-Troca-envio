@@ -7,12 +7,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
-            <img 
+            <img
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-16 w-auto"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
+              className="h-20 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }} />
+
             <p className="text-gray-300 leading-relaxed">
               Devolvendo tempo para você viver o que realmente importa.
             </p>
@@ -60,31 +60,31 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a 
+              <a
                 href="https://www.instagram.com/troca_envio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                style={{ backgroundColor: '#00B6A5' }}
-              >
+                style={{ backgroundColor: '#00B6A5' }}>
+
                 <Instagram className="h-5 w-5 text-white" />
               </a>
-              <a 
+              <a
                 href="https://www.linkedin.com/company/trocaenvio/about/?viewAsMember=true"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                style={{ backgroundColor: '#00B6A5' }}
-              >
+                style={{ backgroundColor: '#00B6A5' }}>
+
                 <Linkedin className="h-5 w-5 text-white" />
               </a>
-              <a 
+              <a
                 href="https://www.facebook.com/profile.php?id=61586922030956"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                style={{ backgroundColor: '#00B6A5' }}
-              >
+                style={{ backgroundColor: '#00B6A5' }}>
+
                 <Facebook className="h-5 w-5 text-white" />
               </a>
             </div>
@@ -112,8 +112,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
