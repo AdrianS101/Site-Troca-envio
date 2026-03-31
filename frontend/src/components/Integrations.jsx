@@ -66,7 +66,7 @@ const Integrations = () => {
               <img 
                 src={integration.logo}
                 alt={integration.alt}
-                className={integration.name === 'Shopee' ? 'max-h-32 w-auto object-contain' : 'max-h-20 w-auto object-contain'}
+                className={integration.name === 'Shopee' ? 'max-h-24 w-auto object-contain' : 'max-h-20 w-auto object-contain'}
                 style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.filter = 'grayscale(0%)';
