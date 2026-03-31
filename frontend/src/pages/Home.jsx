@@ -5,6 +5,7 @@ import Solution from '../components/Solution';
 import HowItWorks from '../components/HowItWorks';
 import Differentials from '../components/Differentials';
 import Positioning from '../components/Positioning';
+import Testimonials from '../components/Testimonials';
 import Integrations from '../components/Integrations';
 import FinalCTA from '../components/FinalCTA';
 import Header from '../components/Header';
@@ -21,6 +22,7 @@ const Home = () => {
       <HowItWorks />
       <Differentials />
       <Positioning />
+      <Testimonials />
       <Integrations />
       <FinalCTA />
       <Footer />

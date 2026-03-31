@@ -54,7 +54,7 @@ const Positioning = () => {
             </div>
             <div className="space-y-2">
               <div className="text-5xl font-bold" style={{ color: '#00B6A5' }}>24/7</div>
-              <p className="text-gray-600">disponibilidade total</p>
+              <p className="text-gray-600">Sempre disponível</p>
             </div>
             <div className="space-y-2">
               <div className="text-5xl font-bold" style={{ color: '#00B6A5' }}>0</div>

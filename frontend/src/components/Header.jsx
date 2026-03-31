@@ -26,12 +26,12 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <div className="flex items-center">
             <img 
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-12 w-auto"
+              className="h-16 sm:h-20 w-auto"
             />
           </div>
           

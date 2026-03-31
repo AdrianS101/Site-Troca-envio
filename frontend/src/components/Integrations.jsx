@@ -4,17 +4,17 @@ const Integrations = () => {
   const integrations = [
     {
       name: 'Mercado Livre',
-      logo: 'https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/logo__large_plus.png',
+      logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/7h2aev56_Mercado%20Livre.png',
       alt: 'Mercado Livre'
     },
     {
       name: 'Shopee',
-      logo: 'https://logos-world.net/wp-content/uploads/2022/04/Shopee-Logo.png',
+      logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/n3bdpdg8_Shopee.png',
       alt: 'Shopee'
     },
     {
       name: 'Correios',
-      logo: 'https://logodownload.org/wp-content/uploads/2020/02/correios-logo.png',
+      logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/c6vctbm4_correios.svg',
       alt: 'Correios'
     }
   ];

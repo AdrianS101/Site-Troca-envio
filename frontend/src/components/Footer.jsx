@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Linkedin, Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -58,13 +58,40 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Horário de Atendimento</h4>
-            <div className="text-gray-300 space-y-2">
-              <p>Segunda a Sexta</p>
-              <p className="font-semibold text-white">9h às 18h</p>
-              <p className="text-sm mt-4">
-                Lockers disponíveis 24/7
-              </p>
+            <h4 className="text-lg font-semibold">Redes Sociais</h4>
+            <div className="flex gap-4">
+              <a 
+                href="https://www.instagram.com/troca_envio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                style={{ backgroundColor: '#00B6A5' }}
+              >
+                <Instagram className="h-5 w-5 text-white" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/trocaenvio/about/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                style={{ backgroundColor: '#00B6A5' }}
+              >
+                <Linkedin className="h-5 w-5 text-white" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61586922030956"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                style={{ backgroundColor: '#00B6A5' }}
+              >
+                <Facebook className="h-5 w-5 text-white" />
+              </a>
+            </div>
+            <div className="text-gray-300 space-y-2 pt-4">
+              <p className="text-sm font-semibold">Horário de Atendimento</p>
+              <p className="text-sm">Segunda a Sexta: 9h às 18h</p>
+              <p className="text-sm">Lockers disponíveis 24/7</p>
             </div>
           </div>
         </div>
