@@ -7,7 +7,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">TROCAENVIO</h3>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
+              alt="TROCAENVIO"
+              className="h-10 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
             <p className="text-gray-300 leading-relaxed">
               Devolvendo tempo para você viver o que realmente importa.
             </p>
