@@ -94,7 +94,7 @@ const Integrations = () => {
                 <img 
                   src={integration.logo}
                   alt={integration.alt}
-                  className="max-h-16 w-auto object-contain"
+                  className="max-h-20 w-auto object-contain"
                   style={{ filter: 'grayscale(100%)', opacity: 0.6 }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.filter = 'grayscale(0%)';
