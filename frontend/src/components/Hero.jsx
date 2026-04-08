@@ -21,34 +21,23 @@ const Hero = () => {
           <div className="space-y-8 animate-fadeInUp">
             <h1
               className="!font-extrabold !text-5xl !text-left !pt-[1px] !pb-[1px] !pr-[10px] !text-[#133660]"
-              style={{ color: '#133660' }}>Chega de perder tempo com entregas 
-e devoluções
+              style={{ color: '#133660' }}>Transforme a gestão de entregas do seu condomínio
 
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-              Resolva tudo direto do seu condomínio, sem filas, trânsito ou burocracia. Envie e devolva suas encomendas com mais praticidade e rapidez.
+              Centralize o recebimento e envio de encomendas com mais controle, praticidade e menos esforço operacional.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="pt-4">
               <Button
                 size="lg"
                 onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
                 style={{ backgroundColor: '#00B6A5' }}
                 className="text-lg px-8 py-6 hover:opacity-90 transition-all hover:scale-105">
 
-                Quero simplificar meus envios
+                Quero a trocaenvio no meu condomínio
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
-                className="text-lg px-8 py-6 border-2 hover:bg-gray-50 transition-all"
-                style={{ borderColor: '#133660', color: '#133660' }}>
-
-                Falar com especialista
               </Button>
             </div>
           </div>

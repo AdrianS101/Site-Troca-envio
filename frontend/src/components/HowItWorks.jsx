@@ -18,8 +18,8 @@ const HowItWorks = () => {
     {
       icon: Truck,
       number: '03',
-      title: 'Integração com transportadoras',
-      description: 'Conectamos com Correios, Mercado Livre, Shopee e outras plataformas.'
+      title: 'Envio para transportadora',
+      description: 'Encaminhamos sua encomenda para envio com agilidade e segurança.'
     },
     {
       icon: CheckCircle,

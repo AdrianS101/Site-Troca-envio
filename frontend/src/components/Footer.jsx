@@ -48,7 +48,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-gray-300">
                 <Mail className="h-5 w-5" style={{ color: '#00B6A5' }} />
-                <span>contato@trocaenvio.com.br</span>
+                <span>rodrigo.napoleao@trocaenvio.com.br</span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
                 <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: '#00B6A5' }} />

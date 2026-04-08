@@ -31,7 +31,7 @@ const FinalCTA = () => {
             Junte-se aos condomínios que já transformaram a forma de enviar pacotes.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+          <div className="flex justify-center pt-8">
             <Button 
               size="lg"
               onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
@@ -40,17 +40,6 @@ const FinalCTA = () => {
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Falar no WhatsApp
-            </Button>
-            
-            <Button 
-              size="lg"
-              variant="outline"
-              onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
-              className="text-lg px-10 py-7 bg-white hover:bg-gray-100 transition-all border-0"
-              style={{ color: '#133660' }}
-            >
-              Quero conhecer
-              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
 
