@@ -23,13 +23,11 @@ const Hero = () => {
               className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
               style={{ color: '#133660' }}
             >
-              Porque o tempo não espera.
+              Chega de perder tempo com entregas e devoluções
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-              Elimine filas, trânsito e burocracia. 
-              Envie suas encomendas direto do seu condomínio, 
-              sem perder tempo com logística.
+              Resolva tudo direto do seu condomínio, sem filas, trânsito ou burocracia. Envie e devolva suas encomendas com mais praticidade e rapidez.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
