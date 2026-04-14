@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 max-w-lg mx-auto">
               <img
-                src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/91mugjpn_Gemini_Generated_Image_596i4d596i4d596i.png"
+                src="/foto-principal.png"
                 alt="Locker TROCAENVIO em condomínio"
                 className="w-full h-auto object-cover" />
 
