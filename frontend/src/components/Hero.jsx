@@ -37,17 +37,14 @@ const Hero = () => {
               E se isso estiver no "quintal" de casa, sem filas, sem estacionamento e em poucos cliques.
             </p>
 
-            <div className="pt-2 flex justify-center lg:justify-start">
+            <div className="pt-2 flex justify-center lg:justify-start px-4 sm:px-0">
               <Button
                 size="lg"
                 onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
                 style={{ backgroundColor: '#00B6A5' }}
-                className="hover:opacity-90 transition-all hover:scale-105 w-full sm:w-auto"
-                style2={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', padding: '1rem 2rem' }}
+                className="hover:opacity-90 transition-all hover:scale-105 text-sm sm:text-base px-5 sm:px-8 py-4 sm:py-6"
               >
-                <span style={{ fontSize: 'clamp(0.85rem, 2.8vw, 1rem)' }}>
-                  Quero a trocaenvio no meu condomínio
-                </span>
+                Quero a trocaenvio no meu condomínio
                 <ArrowRight className="ml-2 h-4 w-4 flex-shrink-0" />
               </Button>
             </div>

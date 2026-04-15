@@ -21,13 +21,13 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'}`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+        <div className="flex items-center justify-between h-20 sm:h-24 lg:h-28">
           {/* Logo — bem maior no mobile */}
           <div className="flex items-center flex-shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-16 sm:h-20 lg:h-28 xl:h-32 w-auto"
+              className="h-20 sm:h-24 lg:h-28 xl:h-32 w-auto"
             />
           </div>
 
