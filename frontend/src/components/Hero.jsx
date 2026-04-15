@@ -10,7 +10,6 @@ const Hero = () => {
           src="https://images.unsplash.com/photo-1644674363808-7dd3c5702839"
           alt="Locker moderno"
           className="w-full h-full object-cover opacity-10" />
-
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(135deg, rgba(19, 54, 96, 0.03) 0%, rgba(0, 182, 165, 0.03) 100%)'
         }}></div>
@@ -21,12 +20,12 @@ const Hero = () => {
           <div className="space-y-8 animate-fadeInUp">
             <h1
               className="!font-extrabold !text-5xl !text-left !pt-[1px] !pb-[1px] !pr-[10px] !text-[#133660]"
-              style={{ color: '#133660' }}>Transforme a gestão de entregas do seu condomínio
-
+              style={{ color: '#133660' }}>
+              Quem disse que precisa sair do condomínio para <span style={{ color: '#00B6A5' }}>DEVOLVER</span> ou <span style={{ color: '#00B6A5' }}>ENVIAR</span> sua encomenda?
             </h1>
-            
+
             <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-              Centralize o recebimento e envio de encomendas com mais controle, praticidade e menos esforço operacional.
+              E se isso estiver no "quintal" de casa, sem filas, sem estacionamento e em poucos cliques.
             </p>
 
             <div className="pt-4">
@@ -35,7 +34,6 @@ const Hero = () => {
                 onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
                 style={{ backgroundColor: '#00B6A5' }}
                 className="text-lg px-8 py-6 hover:opacity-90 transition-all hover:scale-105">
-
                 Quero a trocaenvio no meu condomínio
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -48,7 +46,6 @@ const Hero = () => {
                 src="/foto-principal.png"
                 alt="Locker TROCAENVIO em condomínio"
                 className="w-full h-auto object-cover" />
-
             </div>
             <div
               className="absolute -bottom-8 -right-8 w-64 h-64 rounded-full blur-3xl opacity-20"
@@ -57,8 +54,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default Hero;

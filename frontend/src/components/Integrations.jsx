@@ -36,17 +36,55 @@ const Integrations = () => {
       alt: 'Total Express'
     },
     {
-      name: 'Azul Cargo',
-      logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/pn5v4cnz_logo-azul-cargo-express-1024.png',
-      alt: 'Azul Cargo'
+      name: 'J&T Express',
+      logo: 'https://logo.clearbit.com/jet.express',
+      alt: 'J&T Express'
+    },
+    {
+      name: 'Pegaki',
+      logo: 'https://logo.clearbit.com/pegaki.com.br',
+      alt: 'Pegaki'
+    },
+    {
+      name: 'MelhorPonto',
+      logo: 'https://logo.clearbit.com/melhorporto.com.br',
+      alt: 'MelhorPonto'
     }
   ];
+
+  const LogoCard = ({ integration, large = false }) => {
+    const [imgError, setImgError] = React.useState(false);
+
+    return (
+      <div className={`bg-white ${large ? 'p-8' : 'p-6'} rounded-${large ? '2xl' : 'xl'} shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex items-center justify-center min-h-[100px]`}>
+        {!imgError ? (
+          <img
+            src={integration.logo}
+            alt={integration.alt}
+            className={large ? 'max-h-20 w-auto object-contain' : 'max-h-16 w-auto object-contain'}
+            style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
+            onError={() => setImgError(true)}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.filter = 'grayscale(0%)';
+              e.currentTarget.style.opacity = '1';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.filter = 'grayscale(100%)';
+              e.currentTarget.style.opacity = '0.7';
+            }}
+          />
+        ) : (
+          <span className="font-bold text-lg" style={{ color: '#133660' }}>{integration.name}</span>
+        )}
+      </div>
+    );
+  };
 
   return (
     <section id="integracoes" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 space-y-4">
-          <h2 
+          <h2
             className="text-4xl sm:text-5xl font-bold"
             style={{ color: '#133660' }}
           >
@@ -59,53 +97,17 @@ const Integrations = () => {
 
         <div className="grid sm:grid-cols-3 gap-12 max-w-5xl mx-auto items-center">
           {integrations.map((integration, index) => (
-            <div 
-              key={index}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex items-center justify-center"
-            >
-              <img 
-                src={integration.logo}
-                alt={integration.alt}
-                className={integration.name === 'Shopee' ? 'max-h-24 w-auto object-contain' : 'max-h-20 w-auto object-contain'}
-                style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.filter = 'grayscale(0%)';
-                  e.currentTarget.style.opacity = '1';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.filter = 'grayscale(100%)';
-                  e.currentTarget.style.opacity = '0.7';
-                }}
-              />
-            </div>
+            <LogoCard key={index} integration={integration} large={true} />
           ))}
         </div>
 
         <div className="mt-16 text-center">
           <p className="text-lg text-gray-600 mb-8">
-            E muitas outras transportadoras e plataformas
+            E muitas outras plataformas, transportadoras e pontos de coleta
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
             {otherIntegrations.map((integration, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center"
-              >
-                <img 
-                  src={integration.logo}
-                  alt={integration.alt}
-                  className="max-h-20 w-auto object-contain"
-                  style={{ filter: 'grayscale(100%)', opacity: 0.6 }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(0%)';
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'grayscale(100%)';
-                    e.currentTarget.style.opacity = '0.6';
-                  }}
-                />
-              </div>
+              <LogoCard key={index} integration={integration} />
             ))}
           </div>
         </div>

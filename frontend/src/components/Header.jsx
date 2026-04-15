@@ -31,7 +31,7 @@ const Header = () => {
             <img
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-14 sm:h-20 lg:h-28 xl:h-32 w-auto !pl-[10px] !pr-[10px]" />
+              className="h-20 sm:h-28 lg:h-36 xl:h-40 w-auto !pl-[10px] !pr-[10px]" />
 
           </div>
           

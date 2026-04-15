@@ -49,7 +49,7 @@ const Positioning = () => {
 
           <div className="grid sm:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
             <div className="space-y-2">
-              <div className="text-5xl font-bold" style={{ color: '#00B6A5' }}>+2h</div>
+              <div className="text-5xl font-bold" style={{ color: '#00B6A5' }}>5h</div>
               <p className="text-gray-600">economizadas por semana</p>
             </div>
             <div className="space-y-2">
