@@ -20,14 +20,15 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
-          {/* Logo */}
+          {/* Logo — bem maior no mobile */}
           <div className="flex items-center flex-shrink-0">
             <img
               src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
               alt="TROCAENVIO"
-              className="h-10 sm:h-14 lg:h-20 xl:h-24 w-auto" />
+              className="h-10 sm:h-16 lg:h-20 xl:h-24 w-auto"
+            />
           </div>
 
           {/* Desktop Nav */}
@@ -42,18 +43,18 @@ const Header = () => {
 
           {/* Mobile hamburger */}
           <button className="md:hidden p-2 rounded-lg" onClick={() => setMenuOpen(!menuOpen)} style={{ color: '#133660' }}>
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {menuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile dropdown menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 py-4 space-y-3 px-2">
-            <button onClick={() => scrollToSection('como-funciona')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Como Funciona</button>
-            <button onClick={() => scrollToSection('diferenciais')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Diferenciais</button>
-            <button onClick={() => scrollToSection('integracoes')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Integrações</button>
+          <div className="md:hidden bg-white border-t border-gray-100 py-4 space-y-2 shadow-lg">
+            <button onClick={() => scrollToSection('como-funciona')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Como Funciona</button>
+            <button onClick={() => scrollToSection('diferenciais')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Diferenciais</button>
+            <button onClick={() => scrollToSection('integracoes')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Integrações</button>
             <div className="px-4 pt-2">
-              <Button onClick={() => { window.open('https://wa.me/5511930063996', '_blank'); setMenuOpen(false); }} style={{ backgroundColor: '#00B6A5' }} className="w-full hover:opacity-90">
+              <Button onClick={() => { window.open('https://wa.me/5511930063996', '_blank'); setMenuOpen(false); }} style={{ backgroundColor: '#00B6A5' }} className="w-full hover:opacity-90 text-base py-3">
                 Falar Conosco
               </Button>
             </div>
