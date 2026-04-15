@@ -14,14 +14,15 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* Text block */}
-          <div className="space-y-5 sm:space-y-8 text-center lg:text-left">
+          <div className="space-y-5 sm:space-y-8 text-center lg:text-left w-full">
             <h1
-              className="font-extrabold leading-tight"
+              className="font-extrabold leading-tight text-center lg:text-left"
               style={{
                 color: '#133660',
-                fontSize: 'clamp(1.6rem, 6vw, 3rem)',
-                wordBreak: 'break-word',
+                fontSize: 'clamp(1.5rem, 5.5vw, 3rem)',
+                wordBreak: 'keep-all',
                 overflowWrap: 'break-word',
+                hyphens: 'none',
               }}
             >
               Quem disse que precisa sair do condomínio para{' '}
@@ -31,18 +32,18 @@ const Hero = () => {
             </h1>
 
             <p
-              className="text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-              style={{ fontSize: 'clamp(1rem, 3.5vw, 1.35rem)' }}
+              className="text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
+              style={{ fontSize: 'clamp(0.95rem, 3.2vw, 1.35rem)' }}
             >
               E se isso estiver no "quintal" de casa, sem filas, sem estacionamento e em poucos cliques.
             </p>
 
-            <div className="pt-2 flex justify-center lg:justify-start px-4 sm:px-0">
+            <div className="pt-2 flex justify-center lg:justify-start">
               <Button
                 size="lg"
                 onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
                 style={{ backgroundColor: '#00B6A5' }}
-                className="hover:opacity-90 transition-all hover:scale-105 text-sm sm:text-base px-5 sm:px-8 py-4 sm:py-6"
+                className="hover:opacity-90 transition-all hover:scale-105 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6"
               >
                 Quero a trocaenvio no meu condomínio
                 <ArrowRight className="ml-2 h-4 w-4 flex-shrink-0" />
