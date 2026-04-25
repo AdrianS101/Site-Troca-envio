@@ -16,7 +16,7 @@ const Differentials = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: '#133660' }}>
-            Por que escolher TROCAENVIO?
+            Por que escolher a trocaenvio?
           </h2>
           <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Diferenciais que transformam sua experiência logística

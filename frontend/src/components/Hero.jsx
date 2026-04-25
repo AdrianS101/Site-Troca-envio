@@ -26,8 +26,8 @@ const Hero = () => {
               }}
             >
               Quem disse que precisa sair do condomínio para{' '}
-              <span style={{ color: '#00B6A5' }}>DEVOLVER</span> ou{' '}
-              <span style={{ color: '#00B6A5' }}>ENVIAR</span>{' '}
+              <span style={{ color: '#00B6A5', fontSize: '85%' }}>DEVOLVER</span> ou{' '}
+              <span style={{ color: '#00B6A5', fontSize: '85%' }}>ENVIAR</span>{' '}
               sua encomenda?
             </h1>
 

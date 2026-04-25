@@ -23,7 +23,7 @@ const Solution = () => {
                 Sua logística resolvida sem sair de casa
               </h2>
               <p className="text-base sm:text-xl text-gray-600 leading-relaxed">
-                Com TROCAENVIO, você deixa seu pacote no locker do condomínio e nós cuidamos do resto. Simples assim.
+                Com TROCAENVIO, você deixa seu pacote no locker do condomínio e nós cuidamos do resto, simples assim!
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
