@@ -6,7 +6,7 @@ const Problem = () => {
     { icon: Clock, title: 'Perder tempo em filas', description: 'Horas desperdiçadas esperando atendimento' },
     { icon: Navigation, title: 'Deslocamento e trânsito', description: 'Ir até agências, gastar combustível e contrair estresse.' },
     { icon: Users, title: 'Horários limitados', description: <><br className="hidden sm:block" />Dependência do horário comercial das agências</> },
-    { icon: FileText, title: 'Burocracia desnecessária', description: <><br className="hidden sm:block" />Processos complicados para algo simples</> },
+    { icon: FileText, title: 'Burocracia desnecessária', description: 'Processos complicados para algo simples' },
   ];
 
   return (
