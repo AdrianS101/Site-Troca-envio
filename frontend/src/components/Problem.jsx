@@ -26,7 +26,7 @@ const Problem = () => {
               <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(19, 54, 96, 0.1)' }}>
                 <problem.icon className="h-6 sm:h-7 w-6 sm:w-7" style={{ color: '#133660' }} />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold" style={{ color: '#133660' }}>{problem.title}</h3>
+              <h3 className="text-lg sm:text-xl font-semibold min-h-[3.5rem] flex items-start" style={{ color: '#133660' }}>{problem.title}</h3>
               <p className="text-gray-600 text-sm sm:text-base">{problem.description}</p>
             </div>
           ))}
