@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-x-hidden">
+    <section className="relative min-h-screen flex items-center pt-28 sm:pt-32 lg:pt-40 overflow-x-hidden">
       <div className="absolute inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1644674363808-7dd3c5702839" alt="Locker moderno" className="w-full h-full object-cover opacity-10" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(19, 54, 96, 0.03) 0%, rgba(0, 182, 165, 0.03) 100%)' }}></div>
