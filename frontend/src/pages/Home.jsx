@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Problem from '../components/Problem';
 import Solution from '../components/Solution';
@@ -14,9 +14,20 @@ import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import MobileAppBar from '../components/MobileAppBar';
 import { useRevealOnScroll } from '../hooks/useReveal';
+import { scrollToSection } from '../config/site';
 
 const Home = () => {
   useRevealOnScroll();
+
+  // Chegada com âncora (ex.: /#integracoes vindo das páginas legais).
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return undefined;
+    const t = window.setTimeout(() => {
+      if (document.getElementById(id)) scrollToSection(id);
+    }, 60);
+    return () => window.clearTimeout(t);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

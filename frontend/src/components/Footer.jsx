@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, MapPin, Phone, Instagram, Linkedin, Facebook, Clock, Package } from 'lucide-react';
 import { CONTACT, SOCIAL, LEGAL, NAV_ITEMS, APP_URL, scrollToSection } from '../config/site';
+import { Link } from 'react-router-dom';
 import { Logo } from './site/Buttons';
 
 const socials = [
@@ -103,8 +104,8 @@ const Footer = () => (
       <div className="mt-10 flex flex-col-reverse items-center justify-between gap-4 border-t border-brand/10 pt-6 text-sm text-slate-500 sm:flex-row">
         <p>© {new Date().getFullYear()} TROCAENVIO. Todos os direitos reservados.</p>
         <ul className="flex gap-6">
-          <li><a href={LEGAL.privacy} className="inline-flex min-h-[44px] items-center hover:text-brand">Política de Privacidade</a></li>
-          <li><a href={LEGAL.terms} className="inline-flex min-h-[44px] items-center hover:text-brand">Termos de Uso</a></li>
+          <li><Link to={LEGAL.privacy} className="inline-flex min-h-[44px] items-center hover:text-brand">Política de Privacidade</Link></li>
+          <li><Link to={LEGAL.terms} className="inline-flex min-h-[44px] items-center hover:text-brand">Termos de Uso</Link></li>
         </ul>
       </div>
     </div>

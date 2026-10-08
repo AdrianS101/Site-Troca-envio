@@ -3,7 +3,7 @@ import { Smartphone } from 'lucide-react';
 import { AppButton } from './site/Buttons';
 import { useReducedMotion } from '../hooks/useReveal';
 
-// Moldura de celular em HTML/CSS (ilustrativa). A tela é a captura da tela de login do app.
+// Moldura de celular em HTML/CSS (ilustrativa). A tela é a captura original da tela de login do PWA.
 const PhoneMockup = () => {
   const tiltRef = useRef(null);
   const reduce = useReducedMotion();
@@ -32,12 +32,12 @@ const PhoneMockup = () => {
           <div className="overflow-hidden rounded-[36px] bg-white">
             <img
               src="/app-tela-login.webp"
-              width="427"
-              height="906"
+              width="478"
+              height="963"
               loading="lazy"
               decoding="async"
               alt="Tela de login do app TROCAENVIO, com campos de e-mail e senha, botão Entrar e opção para criar conta"
-              className="aspect-[427/906] w-full"
+              className="aspect-[478/963] w-full"
             />
           </div>
         </div>

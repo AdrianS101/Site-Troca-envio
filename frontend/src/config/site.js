@@ -29,10 +29,9 @@ export const SOCIAL = {
   facebook: 'https://www.facebook.com/profile.php?id=61586922030956',
 };
 
-// Páginas legais ainda não publicadas (mesmo destino da V1).
 export const LEGAL = {
-  privacy: '#',
-  terms: '#',
+  privacy: '/politica-de-privacidade',
+  terms: '/termos-de-uso',
 };
 
 export const NAV_ITEMS = [
@@ -44,7 +43,11 @@ export const NAV_ITEMS = [
 
 export const scrollToSection = (id) => {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (!el) {
+    // Fora da home (ex.: páginas legais): volta para a seção na página inicial.
+    window.location.assign(`/#${id}`);
+    return;
+  }
   // Altura do cabeçalho já compacto (após rolar) + respiro.
   const offset = (window.innerWidth >= 1024 ? 72 : 64) + 8;
   const top = el.getBoundingClientRect().top + window.scrollY - offset;

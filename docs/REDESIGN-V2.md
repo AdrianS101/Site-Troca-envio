@@ -28,22 +28,21 @@ Documento interno: não é publicado no site.
 - `APP_STORES`: links futuros das lojas, desativados (`enabled: false`). Ainda não há componente que os exiba;
 - WhatsApp, contatos, redes sociais, links legais e logo.
 
-## Pendências de validação (comercial/jurídico)
+## Validação de conteúdo
 
-1. **Indicadores**: "5h economizadas por semana" e "0 filas ou esperas" (mantidos da V1, sem fonte).
-2. **Avaliação**: "4.9/5.0 baseado em 2.847 avaliações" (sem fonte).
-3. **Depoimentos**: confirmar que os 6 são reais e autorizados. Inclui o "aumentou 300%" (Carlos Eduardo) e o subtítulo "Milhares de pessoas já recuperaram seu tempo".
-4. **Alegações comerciais**: "Implementação em dias", "Resultados imediatos", "Junte-se aos condomínios que já transformaram…", "Segurança garantida", "Rastreamento em tempo real", "Integração completa / Conectado com Mercado Livre, Shopee, Correios…".
-5. **Integrações**: confirmar que a compatibilidade com cada marca é real. Elas não são apresentadas como parceria formal; há uma nota de titularidade das marcas.
-6. **24/7**: o site informa que 24/7 vale apenas para o depósito no locker e que coleta, atendimento e entrega não são 24/7. Confirmar a redação com a operação.
-7. **Instruções de tela inicial**: os caminhos do Safari (Compartilhar > Adicionar à Tela de Início) e do Chrome Android são genéricos. Validar no PWA real, incluindo se ele tem manifest próprio.
+Em 08/10/2026 o cliente validou os indicadores (5h, 24/7, 0 filas), a avaliação 4.9/5.0 com 2.847 avaliações, os depoimentos, as alegações comerciais, as integrações, a redação sobre o 24/7 e as instruções de tela inicial apresentadas na entrega.
+
+## Páginas legais
+
+- `/politica-de-privacidade` e `/termos-de-uso` (`frontend/src/pages/legalContent.js`), com links no rodapé.
+- São versões simples, criadas a pedido do cliente e baseadas na LGPD e no CDC. Recomenda-se revisão jurídica, sobretudo para incluir razão social e CNPJ, nomear o encarregado (DPO) e confirmar os fornecedores (a ferramenta de análise do site é o PostHog).
 
 ## Imagens usadas
 
 - **Hero**: foto do homem usando o locker preto, recortada da área fotográfica da arte `referencia-arte-locker-preto.png`, a pedido do cliente. Todos os textos, o botão e o fundo azul da arte ficaram fora do recorte (`hero-locker-preto.webp`).
 - **"Sua logística resolvida"**: moradora no saguão (`locker-moradora.webp`).
 - **Bloco "tempo"**: `foto-locker-em-uso.jpg` da V1 (`locker-em-uso.webp`). A foto da mulher descansando da prévia não existe como arquivo separado.
-- **Seção do app**: tela de login recortada da arte "Seu tempo é precioso" (`app-tela-login.webp`).
+- **Seção do app**: captura original da tela de login do PWA enviada pelo cliente (`app-tela-login.webp`, 478×963).
 - As imagens são descritas como ilustrativas no texto alternativo: a origem e a fidelidade ao equipamento real não foram verificadas (ver INSTRUCOES-CLAUDE.txt).
 
 ## Logo
@@ -54,6 +53,5 @@ Documento interno: não é publicado no site.
 
 - **Endereço do PWA**: https://trocaenvio-clientes.ecoiamais.com.br/ (informado pelo cliente). Não foi possível abri-lo a partir do ambiente de desenvolvimento.
 - **Foto original do hero**: o recorte vem de uma arte publicitária. Se houver a fotografia original em alta resolução, substituir `hero-locker-preto.webp`.
-- **Tela do app**: para mais nitidez, enviar uma captura original do PWA.
-- **Links legais**: Política de Privacidade e Termos de Uso continuam com `#` (como na V1).
+- **Dados da empresa**: razão social e CNPJ, para completar as páginas legais.
 - **Lojas**: App Store e Google Play ficam desativados até a publicação.
