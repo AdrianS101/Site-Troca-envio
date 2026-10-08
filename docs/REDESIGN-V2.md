@@ -36,7 +36,7 @@ Em 08/10/2026 o cliente validou os indicadores (5h, 24/7, 0 filas), a avaliaçã
 
 - `/politica-de-privacidade` e `/termos-de-uso` (`frontend/src/pages/legalContent.js`), com links no rodapé.
 - São versões simples, criadas a pedido do cliente e baseadas na LGPD e no CDC. A lista de itens não permitidos foi aprovada pelo cliente em 08/10/2026.
-- Razão social e CNPJ ainda não existem. As páginas mostram um aviso provisório; para publicar os dados, basta preencher `COMPANY` em `frontend/src/config/site.js`.
+- CNPJ 66.321.444/0001-37 (informado pelo cliente em 08/10/2026), exibido nas páginas legais e no rodapé. A razão social ainda não foi definida: quando houver, preencher `COMPANY.legalName` em `frontend/src/config/site.js`.
 - Recomenda-se revisão jurídica, sobretudo para nomear o encarregado (DPO) e confirmar os fornecedores (a ferramenta de análise do site é o PostHog).
 
 ## Imagens usadas
@@ -55,5 +55,5 @@ Em 08/10/2026 o cliente validou os indicadores (5h, 24/7, 0 filas), a avaliaçã
 
 - **Endereço do PWA**: https://trocaenvio-clientes.ecoiamais.com.br/ (informado pelo cliente). Não foi possível abri-lo a partir do ambiente de desenvolvimento.
 - **Foto original do hero**: o recorte vem de uma arte publicitária. Se houver a fotografia original em alta resolução, substituir `hero-locker-preto.webp`.
-- **Dados da empresa**: razão social e CNPJ, a preencher em `COMPANY` (`frontend/src/config/site.js`).
+- **Razão social**: a preencher em `COMPANY.legalName` (`frontend/src/config/site.js`).
 - **Lojas**: App Store e Google Play ficam desativados até a publicação.

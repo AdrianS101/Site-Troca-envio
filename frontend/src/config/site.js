@@ -33,7 +33,7 @@ export const SOCIAL = {
 // as páginas legais exibem um aviso provisório.
 export const COMPANY = {
   legalName: '',
-  cnpj: '',
+  cnpj: '66.321.444/0001-37',
 };
 
 export const LEGAL = {

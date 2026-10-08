@@ -97,10 +97,12 @@ summary:focus-visible,
 .snap-row::-webkit-scrollbar { display: none; }
 .snap-row > * { scroll-snap-align: start; }
 
-/* Espaço para a barra inferior do app no celular */
+/* Espaço para a barra inferior do app e o botão do WhatsApp no celular,
+   para que nada cubra a última linha do rodapé */
 .pb-safe-bar {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(144px + env(safe-area-inset-bottom, 0px));
 }
 @media (min-width: 768px) {
-    .pb-safe-bar { padding-bottom: 0; }
+    /* Sem barra inferior; só o espaço do botão flutuante do WhatsApp */
+    .pb-safe-bar { padding-bottom: 72px; }
 }

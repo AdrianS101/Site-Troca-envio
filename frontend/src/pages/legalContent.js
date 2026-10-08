@@ -1,8 +1,12 @@
 import { CONTACT, COMPANY } from '../config/site';
 
-const companyLine = COMPANY.legalName && COMPANY.cnpj
-  ? `O serviço é operado por ${COMPANY.legalName}, inscrita no CNPJ sob o nº ${COMPANY.cnpj}.`
-  : 'TROCAENVIO é o nome comercial do serviço. A razão social e o CNPJ da empresa responsável serão publicados nesta página assim que disponíveis.';
+const companyLine = (() => {
+  if (COMPANY.legalName && COMPANY.cnpj) {
+    return `O serviço é operado por ${COMPANY.legalName} (TROCAENVIO), inscrita no CNPJ sob o nº ${COMPANY.cnpj}.`;
+  }
+  if (COMPANY.cnpj) return `O serviço é operado pela TROCAENVIO, inscrita no CNPJ sob o nº ${COMPANY.cnpj}.`;
+  return 'TROCAENVIO é o nome comercial do serviço. A razão social e o CNPJ da empresa responsável serão publicados nesta página assim que disponíveis.';
+})();
 
 export const LEGAL_UPDATED_AT = '8 de outubro de 2026';
 
