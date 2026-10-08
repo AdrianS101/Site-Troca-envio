@@ -70,15 +70,15 @@ const Hero = () => {
               <picture>
                 <source
                   type="image/webp"
-                  srcSet="/foto-principal-800.webp 800w, /foto-principal.webp 1264w"
+                  srcSet="/hero-locker-preto-720.webp 720w, /hero-locker-preto.webp 811w"
                   sizes="(min-width: 1024px) 600px, 100vw"
                 />
                 <img
-                  src="/foto-principal.png"
-                  width="1264"
-                  height="766"
-                  alt="Imagem ilustrativa de um locker TROCAENVIO em área externa, com a marca na porta"
-                  className="aspect-[1264/766] w-full object-cover"
+                  src="/hero-locker-preto.webp"
+                  width="811"
+                  height="658"
+                  alt="Imagem ilustrativa: homem digita o código no teclado de um locker TROCAENVIO preto, com o celular na mão"
+                  className="aspect-[811/658] w-full object-cover"
                   fetchpriority="high"
                 />
               </picture>

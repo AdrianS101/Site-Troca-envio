@@ -10,8 +10,8 @@ export const APP_STORES = {
   googlePlay: { enabled: false, url: '' },
 };
 
-export const LOGO_URL =
-  'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png';
+// Logo original (fundo claro removido, cores e proporção preservadas).
+export const LOGO_URL = '/logo-trocaenvio.png';
 
 export const WHATSAPP_URL = 'https://wa.me/5511930063996';
 

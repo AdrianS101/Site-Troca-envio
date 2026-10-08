@@ -49,6 +49,8 @@ export const Logo = ({ className = '', imgClassName = '' }) => {
       {!error ? (
         <img
           src={LOGO_SRC}
+          width="689"
+          height="179"
           alt="TROCAENVIO — logística inteligente para sua rotina"
           className={`w-auto object-contain ${imgClassName}`}
           onError={() => setError(true)}

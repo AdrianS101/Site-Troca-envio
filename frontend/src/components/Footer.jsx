@@ -14,7 +14,7 @@ const Footer = () => (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.6fr_1.3fr]">
         <div>
-          <Logo imgClassName="h-20" />
+          <Logo imgClassName="h-14" />
           <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-slate-600">
             Devolvendo tempo para você viver o que realmente importa.
           </p>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Clock, Heart, Home } from 'lucide-react';
+import React, { useRef } from 'react';
+import { useParallax } from '../hooks/useReveal';
 
 const stats = [
   { value: '5h', label: 'economizadas por semana' },
@@ -7,29 +7,39 @@ const stats = [
   { value: '0', label: 'filas ou esperas' },
 ];
 
-// Sem fotografia disponível para este bloco: composição com elementos da marca.
-const BrandComposition = () => (
-  <div aria-hidden="true" className="relative mx-auto aspect-square w-full max-w-[380px]">
-    <div className="absolute inset-0 rounded-full border-[14px] border-white/10" />
-    <div className="absolute inset-[14%] rounded-full border-2 border-dashed border-brand-green/40" />
-    <div className="absolute inset-[28%] flex items-center justify-center rounded-full bg-brand-green shadow-[0_20px_50px_-20px_rgba(24,184,121,0.8)]">
-      <Clock className="h-1/2 w-1/2 text-brand-deep" strokeWidth={1.5} />
+// Foto da V1 (locker em uso). Ilustrativa: origem e fidelidade ao equipamento real não verificadas.
+const Photo = () => {
+  const photoRef = useRef(null);
+  useParallax(photoRef, 12);
+  return (
+    <div className="relative">
+      <div aria-hidden="true" className="absolute -right-4 -top-4 hidden h-24 w-24 rotate-[38deg] rounded-[24px] bg-brand-green lg:block" />
+      <div className="relative overflow-hidden rounded-[28px] shadow-[0_30px_60px_-28px_rgba(0,0,0,0.6)] ring-1 ring-white/10 lg:rounded-[36px] lg:rounded-tl-[96px]">
+        <div ref={photoRef} className="parallax-photo">
+          <picture>
+            <source type="image/webp" srcSet="/locker-em-uso-800.webp 800w, /locker-em-uso.webp 1195w" sizes="(min-width: 1024px) 520px, 100vw" />
+            <img
+              src="/locker-em-uso.webp"
+              width="1195"
+              height="896"
+              loading="lazy"
+              decoding="async"
+              alt="Imagem ilustrativa: pessoa guardando uma caixa em um locker TROCAENVIO branco, com o celular na mão"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </picture>
+        </div>
+      </div>
     </div>
-    <div className="absolute left-[4%] top-[18%] flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand shadow-lg">
-      <Home className="h-7 w-7" strokeWidth={1.75} />
-    </div>
-    <div className="absolute bottom-[12%] right-[2%] flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand shadow-lg">
-      <Heart className="h-7 w-7" strokeWidth={1.75} />
-    </div>
-  </div>
-);
+  );
+};
 
 const Positioning = () => (
   <section aria-labelledby="posicionamento-title" className="relative overflow-hidden bg-brand py-16 text-white sm:py-24">
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand to-brand-deep" />
     <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 hidden h-80 w-40 rotate-[38deg] rounded-[40px] bg-brand-green/80 lg:block" />
 
-    <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8">
+    <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:px-8">
       <div data-reveal>
         <p className="text-base font-semibold text-white/80 sm:text-lg">A TROCAENVIO não entrega pacotes.</p>
         <h2 id="posicionamento-title" className="mt-2 text-[1.875rem] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[2.75rem]">
@@ -51,8 +61,8 @@ const Positioning = () => (
         <p className="mt-5 text-xs text-white/60 sm:text-sm">24/7: acesso ao locker para depósito.</p>
       </div>
 
-      <div data-reveal="fade" style={{ '--reveal-delay': '120ms' }} className="hidden sm:block">
-        <BrandComposition />
+      <div data-reveal="right" style={{ '--reveal-delay': '120ms' }}>
+        <Photo />
       </div>
     </div>
   </section>

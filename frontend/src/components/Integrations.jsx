@@ -1,20 +1,18 @@
 import React from 'react';
 
-const ASSETS = 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts';
-
 const mainIntegrations = [
-  { logo: `${ASSETS}/7h2aev56_Mercado%20Livre.png`, name: 'Mercado Livre' },
-  { logo: `${ASSETS}/1kurdl32_logo-shopee-256.png`, name: 'Shopee' },
-  { logo: `${ASSETS}/c6vctbm4_correios.svg`, name: 'Correios' },
+  { logo: '/logos/mercado-livre.png', name: 'Mercado Livre' },
+  { logo: '/logos/shopee.png', name: 'Shopee' },
+  { logo: '/logos/correios.svg', name: 'Correios' },
 ];
 
 const otherIntegrations = [
-  { logo: `${ASSETS}/otza30zt_logo-jadlog-1024.png`, name: 'Jadlog' },
-  { logo: `${ASSETS}/r1vciy27_logo-loggi-256.png`, name: 'Loggi' },
-  { logo: `${ASSETS}/ic5gye1a_transportadoras-total-express.png`, name: 'Total Express' },
-  { logo: '/logo-jt-recorte.png', name: 'J&T Express' },
-  { logo: '/logo-pegaki-recorte.png', name: 'Pegaki' },
-  { logo: '/logo-melhorenvio-recorte.png', name: 'Melhor Envio' },
+  { logo: '/logos/jadlog.png', name: 'Jadlog' },
+  { logo: '/logos/loggi.png', name: 'Loggi' },
+  { logo: '/logos/total-express.png', name: 'Total Express' },
+  { logo: '/logos/jt-express.png', name: 'J&T Express' },
+  { logo: '/logos/pegaki.png', name: 'Pegaki' },
+  { logo: '/logos/melhor-envio.png', name: 'Melhor Envio' },
 ];
 
 // Logos originais, sem filtros. Se o arquivo não carregar, mostra o nome em texto.

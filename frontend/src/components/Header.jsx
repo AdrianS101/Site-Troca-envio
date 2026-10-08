@@ -60,7 +60,7 @@ const Header = () => {
           className={`flex flex-shrink-0 items-center transition-[height] duration-300 ${scrolled ? 'h-16 lg:h-[72px]' : 'h-[72px] lg:h-[88px]'}`}
           aria-label="TROCAENVIO — início"
         >
-          <Logo imgClassName={`transition-[height] duration-300 ${scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`} />
+          <Logo imgClassName={`transition-[height] duration-300 ${scrolled ? 'h-10 lg:h-12' : 'h-11 lg:h-14'}`} />
         </a>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 md:flex lg:gap-2">
