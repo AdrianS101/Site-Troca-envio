@@ -1,74 +1,127 @@
-import React from 'react';
-import { Package, Truck, Zap, CheckCircle, Smartphone } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Smartphone, Package, Truck, Route, CheckCircle } from 'lucide-react';
+import { AppButton, WhatsAppLink } from './site/Buttons';
+import { prefersReducedMotion } from '../hooks/useReveal';
+
+const steps = [
+  {
+    icon: Smartphone,
+    title: 'Acesse o aplicativo',
+    description: 'Cadastre-se, escolha o serviço e receba o código para abertura do locker.',
+  },
+  {
+    icon: Package,
+    title: 'Deixe o pacote no locker',
+    description: 'Deposite sua encomenda no locker instalado no seu condomínio, a qualquer hora do dia.',
+  },
+  {
+    icon: Truck,
+    title: 'Nós coletamos',
+    description: 'Nossa equipe efetua a coleta e triagem das encomendas.',
+  },
+  {
+    icon: Route,
+    title: 'Envio para transportadora, agência ou ponto de coleta',
+    description: 'Encaminhamos sua encomenda para envio ou devolução com agilidade e segurança.',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Entrega realizada',
+    description: 'Seu pacote é entregue e você já vê o status atualizado no site, app ou plataforma.',
+  },
+];
 
 const HowItWorks = () => {
-  const steps = [
-    {
-      icon: Smartphone,
-      number: '01',
-      title: 'Baixe o aplicativo',
-      description: 'Cadastre-se, escolha o serviço e receba o código para abertura do locker.',
-      extra: (
-        <div className="flex gap-2 mt-4 flex-wrap">
-          <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: '#133660' }}>
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
-          </a>
-          <a href="https://play.google.com" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: '#00B6A5' }}>
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-white"><path d="M3.18 23.76c.3.17.64.24.99.2l12.6-7.27-2.83-2.83-10.76 9.9zm-1.49-1.4V1.64c0-.38.11-.7.3-.96L13.65 12 2 21.32c-.19-.26-.3-.58-.3-.96zM21.4 10.6l-2.55-1.47L15.8 12l3.04 3.04 2.57-1.48c.73-.42.73-1.54-.01-1.96zM4.17.24L16.77 7.5l-2.83 2.83L3.17.44c.3-.24.68-.3 1-.2z"/></svg>
-            Google Play
-          </a>
-        </div>
-      )
-    },
-    { icon: Package, number: '02', title: 'Deixe o pacote no locker', description: 'Deposite sua encomenda no locker instalado no seu condomínio, a qualquer hora do dia.' },
-    { icon: Zap, number: '03', title: 'Nós coletamos', description: 'Nossa equipe efetua a coleta e triagem das encomendas.' },
-    { icon: Truck, number: '04', title: 'Envio para transportadora, agência ou ponto de coleta', description: 'Encaminhamos sua encomenda para envio ou devolução com agilidade e segurança.' },
-    { icon: CheckCircle, number: '05', title: 'Entrega realizada', description: 'Seu pacote é entregue e você já vê o status atualizado no site, app ou plataforma.' }
-  ];
+  const listRef = useRef(null);
+  // Sem movimento: todas as etapas já aparecem destacadas.
+  const [active, setActive] = useState(() => (prefersReducedMotion() ? steps.length - 1 : -1));
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const items = listRef.current?.querySelectorAll('[data-step]');
+      if (!items) return;
+      const line = window.innerHeight * 0.72;
+      let idx = -1;
+      items.forEach((el, i) => {
+        if (el.getBoundingClientRect().top < line) idx = i;
+      });
+      setActive((prev) => Math.max(prev, idx));
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   return (
-    <section id="como-funciona" className="py-16 sm:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: '#133660' }}>Como funciona</h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Um processo simples que devolve seu tempo</p>
+    <section id="como-funciona" aria-labelledby="como-title" className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center" data-reveal>
+          <h2 id="como-title" className="text-[2rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-brand sm:text-[2.75rem]">
+            Como funciona.
+          </h2>
+          <p className="mt-3 text-base text-slate-600 sm:text-lg">Um processo simples que devolve seu tempo.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
-          {steps.map((step, index) => (
-            <div key={index} className="relative bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="absolute -top-4 -left-4 w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl text-white" style={{ backgroundColor: '#00B6A5' }}>
-                {step.number}
-              </div>
-              <div className="mt-6 space-y-3">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ backgroundColor: 'rgba(19, 54, 96, 0.1)' }}>
-                  <step.icon className="h-6 w-6" style={{ color: '#133660' }} />
-                </div>
-                <h3 className="text-lg font-bold leading-snug" style={{ color: '#133660' }}>{step.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
-                {step.extra && step.extra}
-              </div>
-              {index < steps.length - 1 && (
-                <div className="hidden xl:flex absolute top-1/2 -right-4 items-center justify-center w-8" style={{ color: '#00B6A5' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <ol ref={listRef} className="relative mt-12 grid gap-4 lg:grid-cols-5 lg:gap-5">
+          {/* Linha de conexão (desktop) */}
+          <span aria-hidden="true" className="absolute left-[10%] right-[10%] top-[52px] hidden h-0.5 bg-brand/10 lg:block" />
+          <span
+            aria-hidden="true"
+            className="absolute left-[10%] top-[52px] hidden h-0.5 bg-brand-green transition-[width] duration-700 ease-out lg:block"
+            style={{ width: `${Math.max(0, active) * 20}%` }}
+          />
+          {/* Linha de conexão (celular/tablet) */}
+          <span aria-hidden="true" className="absolute bottom-10 left-[43px] top-10 w-0.5 bg-brand/10 lg:hidden" />
 
-        <div className="text-center mt-12 sm:mt-16">
-          <p className="text-xl sm:text-2xl font-semibold mb-6" style={{ color: '#133660' }}>Pronto para começar?</p>
-          <button onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
-            className="px-8 py-4 rounded-lg text-white font-semibold text-base sm:text-lg hover:opacity-90 transition-all hover:scale-105 w-full sm:w-auto"
-            style={{ backgroundColor: '#00B6A5' }}>
-            Falar com especialista
-          </button>
+          {steps.map((s, i) => {
+            const on = i <= active;
+            return (
+              <li
+                key={s.title}
+                data-step
+                data-reveal
+                style={{ '--reveal-delay': `${i * 90}ms` }}
+                className={`relative flex gap-4 rounded-2xl border bg-white p-5 transition-[border-color,box-shadow] duration-500 lg:flex-col lg:gap-0 lg:p-6 ${
+                  on
+                    ? 'border-brand-green/50 shadow-[0_14px_34px_-20px_rgba(24,184,121,0.65)]'
+                    : 'border-brand/10 shadow-[0_8px_24px_-20px_rgba(13,40,71,0.4)]'
+                }`}
+              >
+                <span
+                  className={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-500 lg:h-14 lg:w-14 ${
+                    on ? 'bg-brand text-white' : 'bg-brand-gray text-brand'
+                  }`}
+                >
+                  <s.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+                </span>
+                <div className="lg:mt-5">
+                  <span className="text-sm font-extrabold tracking-wider text-brand-green-text">
+                    <span className="sr-only">Etapa </span>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-1 text-[17px] font-bold leading-snug text-brand">{s.title}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-slate-600">{s.description}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+
+        <div className="mt-12 text-center" data-reveal>
+          <p className="text-xl font-bold text-brand sm:text-2xl">Pronto para começar?</p>
+          <div className="mt-5 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <AppButton className="sm:min-w-[200px]" />
+            <WhatsAppLink variant="outlineDark">Falar com especialista</WhatsAppLink>
+          </div>
         </div>
       </div>
     </section>

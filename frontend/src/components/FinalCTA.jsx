@@ -1,49 +1,45 @@
 import React from 'react';
-import { Button } from './ui/button';
-import { MessageCircle } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { AppButton, WhatsAppLink } from './site/Buttons';
 
-const FinalCTA = () => {
-  return (
-    <section id="contato" className="py-20 sm:py-32 relative overflow-hidden">
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #133660 0%, #0d2847 100%)' }}></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-10"
-        style={{ backgroundImage: 'url(https://images.pexels.com/photos/8566622/pexels-photo-8566622.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-      </div>
+const pillars = [
+  { title: 'Rápido', text: 'Implementação em dias' },
+  { title: 'Simples', text: 'Sem complicação' },
+  { title: 'Eficiente', text: 'Resultados imediatos' },
+];
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            Pare de perder tempo!!!!!
-          </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed">
+const FinalCTA = () => (
+  <section id="contato" aria-labelledby="cta-title" className="relative overflow-hidden bg-brand-deep py-16 text-white sm:py-20">
+    <div aria-hidden="true" className="pointer-events-none absolute -left-16 -top-10 h-56 w-28 rotate-[38deg] rounded-[28px] bg-brand-green/80" />
+    <div aria-hidden="true" className="pointer-events-none absolute -bottom-16 -right-10 h-56 w-28 rotate-[38deg] rounded-[28px] bg-brand-teal/50" />
+
+    <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]" data-reveal>
+        <div>
+          <h2 id="cta-title" className="text-[2rem] font-extrabold leading-[1.15] tracking-[-0.02em] sm:text-5xl">Pare de perder tempo.</h2>
+          <p className="mt-3 text-base leading-relaxed text-white/85 sm:text-lg">
             Junte-se aos condomínios que já transformaram a forma de enviar pacotes.
           </p>
-          <div className="flex justify-center pt-4 sm:pt-8">
-            <Button size="lg" onClick={() => window.open('https://wa.me/5511930063996', '_blank')}
-              style={{ backgroundColor: '#00B6A5' }}
-              className="text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 hover:opacity-90 transition-all hover:scale-105 w-full sm:w-auto">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Falar no WhatsApp
-            </Button>
-          </div>
-          <div className="pt-8 sm:pt-12 grid grid-cols-3 gap-4 sm:gap-8 text-white">
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl font-bold" style={{ color: '#00B6A5' }}>Rápido</div>
-              <p className="text-gray-300 text-xs sm:text-sm">Implementação em dias</p>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl font-bold" style={{ color: '#00B6A5' }}>Simples</div>
-              <p className="text-gray-300 text-xs sm:text-sm">Sem complicação</p>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl font-bold" style={{ color: '#00B6A5' }}>Eficiente</div>
-              <p className="text-gray-300 text-xs sm:text-sm">Resultados imediatos</p>
-            </div>
-          </div>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+          <AppButton className="sm:min-w-[200px]" />
+          <WhatsAppLink icon>Falar no WhatsApp</WhatsAppLink>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <ul className="mt-10 grid gap-4 border-t border-white/15 pt-8 sm:grid-cols-3" data-reveal style={{ '--reveal-delay': '100ms' }}>
+        {pillars.map((p) => (
+          <li key={p.title} className="flex items-center gap-3">
+            <CheckCircle2 className="h-6 w-6 flex-shrink-0 text-brand-green" aria-hidden="true" />
+            <span>
+              <span className="block font-bold text-brand-green">{p.title}</span>
+              <span className="block text-sm text-white/80">{p.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
 
 export default FinalCTA;

@@ -1,66 +1,114 @@
 import React from 'react';
-import { Mail, MapPin, Phone, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Linkedin, Facebook, Clock, Package } from 'lucide-react';
+import { CONTACT, SOCIAL, LEGAL, NAV_ITEMS, APP_URL, scrollToSection } from '../config/site';
+import { Logo } from './site/Buttons';
 
-const Footer = () => {
-  return (
-    <footer style={{ backgroundColor: '#133660' }} className="text-white py-12 sm:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
-          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <img src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
-              alt="TROCAENVIO" className="h-14 sm:h-20 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
-            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">Devolvendo tempo para você viver o que realmente importa.</p>
-          </div>
-          <div className="space-y-4">
-            <h4 className="text-base sm:text-lg font-semibold">Navegação</h4>
-            <ul className="space-y-2">
-              {[['como-funciona', 'Como Funciona'], ['diferenciais', 'Diferenciais'], ['integracoes', 'Integrações']].map(([id, label]) => (
-                <li key={id}><a href={`#${id}`} className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">{label}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h4 className="text-base sm:text-lg font-semibold">Contato</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-gray-300 text-sm sm:text-base"><Phone className="h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0" style={{ color: '#00B6A5' }} /><span>(11) 93006-3996</span></li>
-              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base"><Mail className="h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0 mt-0.5" style={{ color: '#00B6A5' }} /><span className="break-all">rodrigo.napoleao@trocaenvio.com.br</span></li>
-              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base"><MapPin className="h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0 mt-0.5" style={{ color: '#00B6A5' }} /><span>São Paulo, Brasil</span></li>
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h4 className="text-base sm:text-lg font-semibold">Redes Sociais</h4>
-            <div className="flex gap-3">
-              {[
-                ['https://www.instagram.com/troca_envio/', Instagram],
-                ['https://www.linkedin.com/company/trocaenvio/about/?viewAsMember=true', Linkedin],
-                ['https://www.facebook.com/profile.php?id=61586922030956', Facebook],
-              ].map(([href, Icon], i) => (
-                <a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className="w-9 sm:w-10 h-9 sm:h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
-                  style={{ backgroundColor: '#00B6A5' }}>
-                  <Icon className="h-4 sm:h-5 w-4 sm:w-5 text-white" />
-                </a>
-              ))}
-            </div>
-            <div className="text-gray-300 space-y-1 sm:space-y-2 pt-3 sm:pt-4">
-              <p className="text-xs sm:text-sm font-semibold">Horário de Atendimento</p>
-              <p className="text-xs sm:text-sm">Segunda a Sexta: 9h às 18h</p>
-              <p className="text-xs sm:text-sm">Lockers disponíveis 24/7</p>
-            </div>
-          </div>
+const socials = [
+  { href: SOCIAL.instagram, Icon: Instagram, label: 'Instagram da TROCAENVIO' },
+  { href: SOCIAL.linkedin, Icon: Linkedin, label: 'LinkedIn da TROCAENVIO' },
+  { href: SOCIAL.facebook, Icon: Facebook, label: 'Facebook da TROCAENVIO' },
+];
+
+const Footer = () => (
+  <footer className="pb-safe-bar border-t border-brand/10 bg-white text-brand-deep">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1.6fr_1.3fr]">
+        <div>
+          <Logo imgClassName="h-20" />
+          <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-slate-600">
+            Devolvendo tempo para você viver o que realmente importa.
+          </p>
         </div>
-        <div className="border-t border-gray-700 pt-6 sm:pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-gray-400 text-xs sm:text-sm">© 2025 TROCAENVIO. Todos os direitos reservados.</p>
-            <div className="flex gap-4 sm:gap-6">
-              <a href="#" className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors">Política de Privacidade</a>
-              <a href="#" className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors">Termos de Uso</a>
-            </div>
+
+        <nav aria-label="Rodapé">
+          <h2 className="text-base font-bold text-brand">Navegação</h2>
+          <ul className="mt-4 space-y-1">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
+                  className="inline-flex min-h-[36px] items-center text-[15px] text-slate-600 hover:text-brand"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[36px] items-center text-[15px] font-semibold text-brand-green-text hover:text-brand">
+                Acessar o app<span className="sr-only"> (abre em nova aba)</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div>
+          <h2 className="text-base font-bold text-brand">Contato</h2>
+          <ul className="mt-3 space-y-1 text-[15px] text-slate-600">
+            <li>
+              <a href={CONTACT.phoneHref} className="flex min-h-[44px] items-center gap-3 hover:text-brand">
+                <Phone className="h-5 w-5 flex-shrink-0 text-brand-green-text" aria-hidden="true" />
+                {CONTACT.phoneLabel}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${CONTACT.email}`} className="flex min-h-[44px] items-center gap-3 text-[14px] [overflow-wrap:anywhere] hover:text-brand">
+                <Mail className="h-5 w-5 flex-shrink-0 text-brand-green-text" aria-hidden="true" />
+                {CONTACT.email}
+              </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-green-text" aria-hidden="true" />
+              {CONTACT.location}
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-base font-bold text-brand">Redes sociais</h2>
+          <ul className="mt-4 flex gap-3">
+            {socials.map(({ href, Icon, label }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white transition-colors hover:bg-brand-green hover:text-brand-deep"
+                >
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 space-y-3 text-sm text-slate-600">
+            <p className="flex items-start gap-3">
+              <Clock className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-green-text" aria-hidden="true" />
+              <span>
+                <span className="block font-semibold text-brand">Horário de atendimento</span>
+                {CONTACT.hours}
+              </span>
+            </p>
+            <p className="flex items-start gap-3">
+              <Package className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-green-text" aria-hidden="true" />
+              <span>
+                <span className="block font-semibold text-brand">Lockers disponíveis 24/7</span>
+                Para depósito das encomendas. Coleta, atendimento e entrega não são 24/7.
+              </span>
+            </p>
           </div>
         </div>
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-10 flex flex-col-reverse items-center justify-between gap-4 border-t border-brand/10 pt-6 text-sm text-slate-500 sm:flex-row">
+        <p>© {new Date().getFullYear()} TROCAENVIO. Todos os direitos reservados.</p>
+        <ul className="flex gap-6">
+          <li><a href={LEGAL.privacy} className="inline-flex min-h-[44px] items-center hover:text-brand">Política de Privacidade</a></li>
+          <li><a href={LEGAL.terms} className="inline-flex min-h-[44px] items-center hover:text-brand">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

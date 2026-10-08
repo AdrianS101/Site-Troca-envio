@@ -1,45 +1,70 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { useParallax } from '../hooks/useReveal';
+
+const benefits = [
+  'Envio direto do seu condomínio',
+  'Sem filas, sem espera',
+  'Coleta automática',
+  'Integração com principais plataformas',
+  'Lockers disponíveis 24/7',
+  'Rastreamento em tempo real',
+];
 
 const Solution = () => {
-  const benefits = [
-    'Envio direto do seu condomínio', 'Sem filas, sem espera',
-    'Coleta automática', 'Integração com principais plataformas',
-    'Disponível 24/7', 'Rastreamento em tempo real'
-  ];
+  const photoRef = useRef(null);
+  useParallax(photoRef, 12);
 
   return (
-    <section className="py-16 sm:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/w4gzu6y8_2%20img.jpg" alt="Pessoa usando locker TROCAENVIO" className="w-full h-auto" />
+    <section aria-labelledby="solucao-title" className="relative overflow-hidden bg-brand-gray py-16 sm:py-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div className="relative" data-reveal="left">
+          <div aria-hidden="true" className="absolute -bottom-5 -left-5 hidden h-28 w-28 rounded-[28px] bg-brand-green/80 lg:block" />
+          <div className="relative overflow-hidden rounded-[28px] shadow-[0_24px_50px_-26px_rgba(13,40,71,0.55)] lg:rounded-[36px] lg:rounded-bl-[96px]">
+            <div ref={photoRef} className="parallax-photo">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/locker-moradora-960.webp 960w, /locker-moradora.webp 1536w"
+                  sizes="(min-width: 1024px) 600px, 100vw"
+                />
+                <img
+                  src="/locker-moradora.webp"
+                  width="1536"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Imagem ilustrativa: mulher depositando uma caixa em um locker TROCAENVIO no saguão de um condomínio"
+                  className="aspect-[3/2] w-full object-cover object-[30%_50%]"
+                />
+              </picture>
             </div>
           </div>
-          <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-            <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight" style={{ color: '#133660' }}>
-                Sua logística resolvida sem sair de casa
-              </h2>
-              <p className="text-base sm:text-xl text-gray-600 leading-relaxed">
-                Com a TROCAENVIO, você deixa seu pacote no locker do condomínio e nós cuidamos do resto, simples assim!
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 sm:p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                  <CheckCircle2 className="h-5 sm:h-6 w-5 sm:w-6 flex-shrink-0 mt-0.5" style={{ color: '#00B6A5' }} />
-                  <span className="text-gray-700 font-medium text-sm sm:text-base">{benefit}</span>
-                </div>
-              ))}
-            </div>
-            <div className="p-5 sm:p-6 rounded-xl" style={{ backgroundColor: 'rgba(0, 182, 165, 0.1)' }}>
-              <p className="text-base sm:text-lg font-semibold" style={{ color: '#133660' }}>
-                "Transformamos minutos em segundos e burocracia em conveniência."
-              </p>
-            </div>
-          </div>
+        </div>
+
+        <div data-reveal="right">
+          <h2 id="solucao-title" className="text-[1.875rem] font-extrabold leading-[1.1] tracking-[-0.02em] text-brand sm:text-[2.75rem]">
+            Sua logística resolvida sem sair de casa.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Com a TROCAENVIO, você deixa seu pacote no locker do condomínio e nós cuidamos do resto, simples assim!
+          </p>
+          <ul className="mt-7 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
+            {benefits.map((b, i) => (
+              <li
+                key={b}
+                data-reveal
+                style={{ '--reveal-delay': `${120 + i * 60}ms` }}
+                className="flex items-start gap-3 rounded-xl bg-white px-4 py-3 text-[15px] font-medium text-brand-deep shadow-[0_6px_18px_-14px_rgba(13,40,71,0.4)]"
+              >
+                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-green" aria-hidden="true" />
+                {b}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-7 border-l-4 border-brand-green pl-4 text-base font-semibold text-brand sm:text-lg">
+            “Transformamos minutos em segundos e burocracia em conveniência.”
+          </p>
         </div>
       </div>
     </section>
