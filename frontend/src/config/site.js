@@ -29,6 +29,13 @@ export const SOCIAL = {
   facebook: 'https://www.facebook.com/profile.php?id=61586922030956',
 };
 
+// Dados societários. Preencha quando disponíveis; enquanto estiverem vazios,
+// as páginas legais exibem um aviso provisório.
+export const COMPANY = {
+  legalName: '',
+  cnpj: '',
+};
+
 export const LEGAL = {
   privacy: '/politica-de-privacidade',
   terms: '/termos-de-uso',

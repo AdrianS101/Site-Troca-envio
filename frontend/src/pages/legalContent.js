@@ -1,4 +1,8 @@
-import { CONTACT } from '../config/site';
+import { CONTACT, COMPANY } from '../config/site';
+
+const companyLine = COMPANY.legalName && COMPANY.cnpj
+  ? `O serviço é operado por ${COMPANY.legalName}, inscrita no CNPJ sob o nº ${COMPANY.cnpj}.`
+  : 'TROCAENVIO é o nome comercial do serviço. A razão social e o CNPJ da empresa responsável serão publicados nesta página assim que disponíveis.';
 
 export const LEGAL_UPDATED_AT = '8 de outubro de 2026';
 
@@ -11,6 +15,7 @@ export const privacyPolicy = {
       title: 'Quem somos',
       paragraphs: [
         `A TROCAENVIO oferece lockers em condomínios para envio e devolução de encomendas, com acesso pelo aplicativo. Estamos localizados em ${CONTACT.location}. Para qualquer assunto relacionado a privacidade, fale conosco pelo e-mail ${CONTACT.email}.`,
+        companyLine,
       ],
     },
     {
@@ -103,6 +108,7 @@ export const termsOfUse = {
       title: 'O serviço',
       paragraphs: [
         'A TROCAENVIO disponibiliza lockers instalados em condomínios para que moradores depositem encomendas destinadas a envio ou devolução. Nossa equipe realiza a coleta e a triagem e encaminha as encomendas à transportadora, agência ou ponto de coleta correspondente. O status é atualizado no site, no aplicativo ou na plataforma de origem.',
+        companyLine,
       ],
     },
     {
