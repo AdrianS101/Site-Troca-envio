@@ -89,18 +89,13 @@ const HowItWorks = () => {
                 key={s.title}
                 data-step
                 data-reveal
+                data-active={on}
                 style={{ '--reveal-delay': `${i * 90}ms` }}
-                className={`relative flex gap-4 rounded-2xl border bg-white p-5 transition-[border-color,box-shadow] duration-500 lg:flex-col lg:gap-0 lg:p-6 ${
-                  on
-                    ? 'border-brand-green/50 shadow-[0_14px_34px_-20px_rgba(24,184,121,0.65)]'
-                    : 'border-brand/10 shadow-[0_8px_24px_-20px_rgba(13,40,71,0.4)]'
-                }`}
+                // Classe fixa: o destaque vem de data-active, para o React não apagar
+                // a classe .is-visible adicionada pela revelação ao rolar.
+                className="group/step relative flex gap-4 rounded-2xl border border-brand/10 bg-white p-5 shadow-[0_8px_24px_-20px_rgba(13,40,71,0.4)] data-[active=true]:border-brand-green/50 data-[active=true]:shadow-[0_14px_34px_-20px_rgba(24,184,121,0.65)] lg:flex-col lg:gap-0 lg:p-6"
               >
-                <span
-                  className={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl transition-colors duration-500 lg:h-14 lg:w-14 ${
-                    on ? 'bg-brand text-white' : 'bg-brand-gray text-brand'
-                  }`}
-                >
+                <span className="relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-gray text-brand transition-colors duration-500 group-data-[active=true]/step:bg-brand group-data-[active=true]/step:text-white lg:h-14 lg:w-14">
                   <s.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <div className="lg:mt-5">

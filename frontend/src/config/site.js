@@ -18,7 +18,7 @@ export const WHATSAPP_URL = 'https://wa.me/5511930063996';
 export const CONTACT = {
   phoneLabel: '(11) 93006-3996',
   phoneHref: 'tel:+5511930063996',
-  email: 'rodrigo.napoleao@trocaenvio.com.br',
+  email: 'comercial@trocaenvio.com.br',
   location: 'São Paulo, Brasil',
   hours: 'Segunda a sexta, das 9h às 18h',
 };

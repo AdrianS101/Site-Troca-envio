@@ -21,7 +21,7 @@ const LogoTile = ({ logo, name, large = false }) => {
   return (
     <li
       className={`flex items-center justify-center rounded-2xl border border-brand/10 bg-white px-4 shadow-[0_6px_20px_-16px_rgba(13,40,71,0.4)] transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-18px_rgba(13,40,71,0.45)] ${
-        large ? 'h-24 sm:h-28' : 'h-20 sm:h-24'
+        large ? 'h-20 sm:h-28' : 'h-20 sm:h-24'
       }`}
     >
       {!error ? (
@@ -31,7 +31,7 @@ const LogoTile = ({ logo, name, large = false }) => {
           loading="lazy"
           decoding="async"
           onError={() => setError(true)}
-          className={`w-auto max-w-full object-contain ${large ? 'max-h-14 sm:max-h-16' : 'max-h-12 sm:max-h-14'}`}
+          className={`w-auto max-w-full object-contain ${large ? 'max-h-12 sm:max-h-16' : 'max-h-12 sm:max-h-14'}`}
         />
       ) : (
         <span className="text-center text-sm font-bold text-brand sm:text-base">{name}</span>
@@ -52,7 +52,7 @@ const Integrations = () => (
         </p>
       </div>
 
-      <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-3 gap-3 sm:gap-4" data-reveal>
+      <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-3 min-[480px]:grid-cols-3 sm:gap-4" data-reveal>
         {mainIntegrations.map((it) => <LogoTile key={it.name} {...it} large />)}
       </ul>
 

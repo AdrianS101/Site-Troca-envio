@@ -43,19 +43,29 @@ export const useRevealOnScroll = () => {
       document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((el) => observer.observe(el));
     observe();
 
-    // Segurança: nunca deixar conteúdo oculto (ex.: impressão, abas em segundo plano).
-    const fallback = window.setTimeout(() => {
-      document.querySelectorAll('[data-reveal]').forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight) el.classList.add('is-visible');
+    // Segurança: tudo que já chegou à tela fica visível, mesmo com rolagem muito rápida
+    // (a rolagem por inércia no celular pode pular quadros do observer).
+    let raf = 0;
+    const revealPassed = () => {
+      raf = 0;
+      document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('is-visible');
+          observer.unobserve(el);
+        }
       });
-    }, 2500);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(revealPassed); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const fallback = window.setTimeout(revealPassed, 2500);
     const onPrint = () => document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'));
     window.addEventListener('beforeprint', onPrint);
 
     return () => {
       observer.disconnect();
       window.clearTimeout(fallback);
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('beforeprint', onPrint);
     };
   }, []);

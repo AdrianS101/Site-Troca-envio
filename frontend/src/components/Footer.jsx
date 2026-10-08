@@ -23,20 +23,20 @@ const Footer = () => (
 
         <nav aria-label="Rodapé">
           <h2 className="text-base font-bold text-brand">Navegação</h2>
-          <ul className="mt-4 space-y-1">
+          <ul className="mt-2">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
                   onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
-                  className="inline-flex min-h-[36px] items-center text-[15px] text-slate-600 hover:text-brand"
+                  className="inline-flex min-h-[44px] items-center text-[15px] text-slate-600 hover:text-brand"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
             <li>
-              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[36px] items-center text-[15px] font-semibold text-brand-green-text hover:text-brand">
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center text-[15px] font-semibold text-brand-green-text hover:text-brand">
                 Acessar o app<span className="sr-only"> (abre em nova aba)</span>
               </a>
             </li>

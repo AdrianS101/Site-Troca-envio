@@ -69,7 +69,7 @@ const Header = () => {
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => go(e, item.id)}
-              className="rounded-full px-3 py-2 text-[15px] font-medium text-brand-deep/80 transition-colors hover:bg-brand-gray hover:text-brand lg:px-4"
+              className="inline-flex min-h-[44px] items-center rounded-full px-3 text-[15px] font-medium text-brand-deep/80 transition-colors hover:bg-brand-gray hover:text-brand lg:px-4"
             >
               {item.label}
             </a>

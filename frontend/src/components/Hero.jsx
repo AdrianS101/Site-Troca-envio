@@ -23,10 +23,10 @@ const Hero = () => {
         <path fill="currentColor" d="M0 80h1440V36C1180 76 860 80 600 56 380 36 170 30 0 54z" />
       </svg>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:px-8 lg:pb-28 lg:pt-16">
-        <div className="max-w-[640px] text-white">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:px-8 lg:pb-28 lg:pt-16">
+        <div className="min-w-0 max-w-[640px] text-white">
           <p
-            className="hero-in mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-green min-[400px]:text-[13px] sm:tracking-[0.14em]"
+            className="hero-in mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.06em] text-brand-green min-[400px]:text-[13px] min-[400px]:tracking-[0.1em] sm:tracking-[0.14em]"
             style={{ '--hero-delay': '0ms' }}
           >
             <span className="h-2 w-2 rounded-full bg-brand-green" aria-hidden="true" />
@@ -34,10 +34,10 @@ const Hero = () => {
           </p>
           <h1
             id="hero-title"
-            className="hero-in text-[2.05rem] min-[380px]:text-[2.25rem] font-extrabold leading-[1.04] tracking-[-0.025em] sm:text-6xl lg:text-[2.9rem] xl:text-[4.1rem]"
+            className="hero-in text-[1.95rem] min-[360px]:text-[2.05rem] min-[380px]:text-[2.25rem] font-extrabold leading-[1.04] tracking-[-0.025em] sm:text-6xl lg:text-[2.9rem] xl:text-[4.1rem]"
             style={{ '--hero-delay': '80ms' }}
           >
-            <span className="whitespace-nowrap">Sua encomenda vai.</span>{' '}
+            <span className="min-[360px]:whitespace-nowrap">Sua encomenda vai.</span>{' '}
             <span className="block">Você fica.</span>
           </h1>
           <p
@@ -61,7 +61,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero-in relative mx-auto w-full max-w-2xl" style={{ '--hero-delay': '200ms' }}>
+        <div className="hero-in relative mx-auto w-full min-w-0 max-w-2xl" style={{ '--hero-delay': '200ms' }}>
           {/* Detalhes verdes atrás da foto */}
           <div aria-hidden="true" className="absolute -right-10 -top-6 hidden h-40 w-40 rotate-[38deg] rounded-[28px] bg-brand-green/90 lg:block" />
           <div aria-hidden="true" className="absolute -bottom-8 -left-6 hidden h-24 w-24 rotate-[38deg] rounded-[22px] border-[10px] border-brand-teal/60 lg:block" />

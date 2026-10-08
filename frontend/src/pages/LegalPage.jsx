@@ -34,10 +34,10 @@ const LegalPage = ({ title, updatedAt, intro, sections }) => {
 
             <nav aria-label="Sumário" className="mt-8 rounded-2xl bg-brand-gray p-5">
               <p className="text-sm font-bold text-brand">Sumário</p>
-              <ol className="mt-3 grid gap-1 text-sm text-slate-700 sm:grid-cols-2">
+              <ol className="mt-2 grid text-sm text-slate-700 sm:grid-cols-2">
                 {sections.map((s, i) => (
                   <li key={s.title}>
-                    <a href={`#secao-${i + 1}`} className="inline-flex min-h-[32px] items-center hover:text-brand">
+                    <a href={`#secao-${i + 1}`} className="inline-flex min-h-[44px] items-center hover:text-brand">
                       {i + 1}. {s.title}
                     </a>
                   </li>

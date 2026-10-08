@@ -84,7 +84,7 @@ const AppSection = () => (
     </div>
 
     <details className="relative mx-auto mt-10 max-w-3xl px-4 sm:px-6" data-reveal>
-      <summary className="mx-auto flex w-fit cursor-pointer list-none items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white/85 underline decoration-brand-green underline-offset-4 hover:text-white">
+      <summary className="mx-auto flex min-h-[44px] w-fit cursor-pointer list-none items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white/85 underline decoration-brand-green underline-offset-4 hover:text-white">
         Como adicionar à tela inicial
       </summary>
       <div className="mt-4 grid gap-4 rounded-2xl bg-white/5 p-5 text-sm leading-relaxed text-white/85 ring-1 ring-white/10 sm:grid-cols-2">
