@@ -1,65 +1,122 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from './ui/button';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { NAV_ITEMS, scrollToSection } from '../config/site';
+import { AppButton, Logo } from './site/Buttons';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    menuRef.current?.querySelector('a')?.focus();
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [menuOpen]);
+
+  const go = (e, id) => {
+    e.preventDefault();
     setMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection(id);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'}`}>
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28 sm:h-32 lg:h-40">
-          {/* Logo — bem maior no mobile */}
-          <div className="flex items-center flex-shrink-0">
-            <img
-              src="https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kla1l48_LOGO%20IA%20na%20Pr%C3%A1tica.png"
-              alt="TROCAENVIO"
-              className="h-28 sm:h-32 lg:h-40 xl:h-48 w-auto"
-            />
-          </div>
+    <header
+      data-site-header
+      className={`fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-300 ${
+        scrolled || menuOpen ? 'shadow-[0_6px_24px_-12px_rgba(13,40,71,0.35)]' : ''
+      }`}
+    >
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+      >
+        Pular para o conteúdo
+      </a>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a
+          href="#inicio"
+          onClick={(e) => go(e, 'inicio')}
+          className={`flex flex-shrink-0 items-center transition-[height] duration-300 ${scrolled ? 'h-16 lg:h-[72px]' : 'h-[72px] lg:h-[88px]'}`}
+          aria-label="TROCAENVIO — início"
+        >
+          <Logo imgClassName={`transition-[height] duration-300 ${scrolled ? 'h-10 lg:h-12' : 'h-11 lg:h-14'}`} />
+        </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 hover:opacity-70 transition-opacity font-medium text-sm lg:text-base">Como Funciona</button>
-            <button onClick={() => scrollToSection('diferenciais')} className="text-gray-700 hover:opacity-70 transition-opacity font-medium text-sm lg:text-base">Diferenciais</button>
-            <button onClick={() => scrollToSection('integracoes')} className="text-gray-700 hover:opacity-70 transition-opacity font-medium text-sm lg:text-base">Integrações</button>
-            <Button onClick={() => window.open('https://wa.me/5511930063996', '_blank')} style={{ backgroundColor: '#00B6A5' }} className="hover:opacity-90 transition-opacity text-sm lg:text-base">
-              Falar Conosco
-            </Button>
-          </nav>
+        <nav aria-label="Principal" className="hidden items-center gap-1 md:flex lg:gap-2">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => go(e, item.id)}
+              className="inline-flex min-h-[44px] items-center rounded-full px-3 text-[15px] font-medium text-brand-deep/80 transition-colors hover:bg-brand-gray hover:text-brand lg:px-4"
+            >
+              {item.label}
+            </a>
+          ))}
+          <AppButton className="ml-2 !min-h-[44px] !px-5 lg:ml-4" />
+        </nav>
 
-          {/* Mobile hamburger */}
-          <button className="md:hidden p-2 rounded-lg" onClick={() => setMenuOpen(!menuOpen)} style={{ color: '#133660' }}>
-            {menuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-          </button>
-        </div>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-brand hover:bg-brand-gray md:hidden"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-controls="menu-mobile"
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+        >
+          {menuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
+        </button>
+      </div>
 
-        {/* Mobile dropdown menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 py-4 space-y-2 shadow-lg">
-            <button onClick={() => scrollToSection('como-funciona')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Como Funciona</button>
-            <button onClick={() => scrollToSection('diferenciais')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Diferenciais</button>
-            <button onClick={() => scrollToSection('integracoes')} className="block w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium text-base">Integrações</button>
-            <div className="px-4 pt-2">
-              <Button onClick={() => { window.open('https://wa.me/5511930063996', '_blank'); setMenuOpen(false); }} style={{ backgroundColor: '#00B6A5' }} className="w-full hover:opacity-90 text-base py-3">
-                Falar Conosco
-              </Button>
-            </div>
-          </div>
-        )}
+      <div
+        id="menu-mobile"
+        ref={menuRef}
+        className={`grid overflow-hidden border-t border-brand/10 bg-white transition-[grid-template-rows,opacity] duration-200 ease-out md:hidden ${
+          menuOpen ? 'grid-rows-[1fr] opacity-100' : 'pointer-events-none grid-rows-[0fr] border-transparent opacity-0'
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        <nav aria-label="Menu móvel" className="min-h-0">
+          <ul className="space-y-1 px-4 py-4">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => go(e, item.id)}
+                  tabIndex={menuOpen ? 0 : -1}
+                  className="flex min-h-[48px] items-center rounded-xl px-4 text-base font-medium text-brand-deep hover:bg-brand-gray"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li className="pt-2">
+              <AppButton className="w-full" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)} />
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );

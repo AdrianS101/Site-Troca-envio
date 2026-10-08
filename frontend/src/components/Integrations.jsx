@@ -1,78 +1,73 @@
 import React from 'react';
 
-const LogoCard = ({ logo, alt }) => {
-  const [imgError, setImgError] = React.useState(false);
+const mainIntegrations = [
+  { logo: '/logos/mercado-livre.png', name: 'Mercado Livre' },
+  { logo: '/logos/shopee.png', name: 'Shopee' },
+  { logo: '/logos/correios.svg', name: 'Correios' },
+];
+
+const otherIntegrations = [
+  { logo: '/logos/jadlog.png', name: 'Jadlog' },
+  { logo: '/logos/loggi.png', name: 'Loggi' },
+  { logo: '/logos/total-express.png', name: 'Total Express' },
+  { logo: '/logos/jt-express.png', name: 'J&T Express' },
+  { logo: '/logos/pegaki.png', name: 'Pegaki' },
+  { logo: '/logos/melhor-envio.png', name: 'Melhor Envio' },
+];
+
+// Logos originais, sem filtros. Se o arquivo não carregar, mostra o nome em texto.
+const LogoTile = ({ logo, name, large = false }) => {
+  const [error, setError] = React.useState(false);
   return (
-    <div className="p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center min-h-[90px] sm:min-h-[100px] bg-white">
-      {!imgError ? (
-        <img src={logo} alt={alt} className="max-h-12 sm:max-h-16 w-auto object-contain"
-          style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
-          onError={() => setImgError(true)}
-          onMouseEnter={(e) => { e.currentTarget.style.filter = 'grayscale(0%)'; e.currentTarget.style.opacity = '1'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(100%)'; e.currentTarget.style.opacity = '0.7'; }}
+    <li
+      className={`flex items-center justify-center rounded-2xl border border-brand/10 bg-white px-4 shadow-[0_6px_20px_-16px_rgba(13,40,71,0.4)] transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-18px_rgba(13,40,71,0.45)] ${
+        large ? 'h-20 sm:h-28' : 'h-20 sm:h-24'
+      }`}
+    >
+      {!error ? (
+        <img
+          src={logo}
+          alt={name}
+          loading="lazy"
+          decoding="async"
+          onError={() => setError(true)}
+          className={`w-auto max-w-full object-contain ${large ? 'max-h-12 sm:max-h-16' : 'max-h-12 sm:max-h-14'}`}
         />
       ) : (
-        <span className="font-bold text-sm text-center" style={{ color: '#133660' }}>{alt}</span>
+        <span className="text-center text-sm font-bold text-brand sm:text-base">{name}</span>
       )}
-    </div>
+    </li>
   );
 };
 
-const Integrations = () => {
-  const mainIntegrations = [
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/7h2aev56_Mercado%20Livre.png', alt: 'Mercado Livre', dark: false },
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/1kurdl32_logo-shopee-256.png', alt: 'Shopee', dark: false },
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/c6vctbm4_correios.svg', alt: 'Correios', dark: false },
-  ];
-
-  const otherIntegrations = [
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/otza30zt_logo-jadlog-1024.png', alt: 'Jadlog', dark: false },
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/r1vciy27_logo-loggi-256.png', alt: 'Loggi', dark: false },
-    { logo: 'https://customer-assets.emergentagent.com/job_tempo-devolvido/artifacts/ic5gye1a_transportadoras-total-express.png', alt: 'Total Express', dark: false },
-    { logo: '/logo-jt.png', alt: 'J&T Express' },
-    { logo: '/logo-pegaki.png', alt: 'Pegaki' },
-    { logo: '/logo-melhorenvio.png', alt: 'Melhor Envio' },
-  ];
-
-  return (
-    <section id="integracoes" className="py-16 sm:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: '#133660' }}>
-            Integrado com quem você já confia
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Conectamos você às principais plataformas e transportadoras do Brasil
-          </p>
-        </div>
-
-        {/* Main 3 */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 max-w-3xl mx-auto">
-          {mainIntegrations.map((item, i) => (
-            <div key={i} className="bg-white p-8 sm:p-10 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex items-center justify-center min-h-[110px]">
-              <img src={item.logo} alt={item.alt} className="max-h-16 sm:max-h-20 w-auto object-contain"
-                style={{ filter: 'grayscale(100%)', opacity: 0.7 }}
-                onMouseEnter={(e) => { e.currentTarget.style.filter = 'grayscale(0%)'; e.currentTarget.style.opacity = '1'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(100%)'; e.currentTarget.style.opacity = '0.7'; }}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Others */}
-        <div className="mt-10 sm:mt-14 text-center">
-          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-            E muitas outras plataformas, transportadoras e pontos de coleta
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 max-w-5xl mx-auto">
-            {otherIntegrations.map((item, i) => (
-              <LogoCard key={i} logo={item.logo} alt={item.alt} />
-            ))}
-          </div>
-        </div>
+const Integrations = () => (
+  <section id="integracoes" aria-labelledby="integracoes-title" className="bg-brand-gray py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl text-center" data-reveal>
+        <h2 id="integracoes-title" className="text-[1.875rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-brand sm:text-[2.75rem]">
+          Integrado com quem você já confia.
+        </h2>
+        <p className="mt-3 text-base text-slate-600 sm:text-lg">
+          Conectamos você às principais plataformas e transportadoras do Brasil
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-3 min-[480px]:grid-cols-3 sm:gap-4" data-reveal>
+        {mainIntegrations.map((it) => <LogoTile key={it.name} {...it} large />)}
+      </ul>
+
+      <p className="mt-10 text-center text-base text-slate-600" data-reveal>
+        E muitas outras plataformas, transportadoras e pontos de coleta
+      </p>
+      <ul className="mx-auto mt-5 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6" data-reveal style={{ '--reveal-delay': '80ms' }}>
+        {otherIntegrations.map((it) => <LogoTile key={it.name} {...it} />)}
+      </ul>
+
+      <p className="mt-8 text-center text-xs text-slate-500">
+        As marcas exibidas pertencem aos seus respectivos titulares.
+      </p>
+    </div>
+  </section>
+);
 
 export default Integrations;

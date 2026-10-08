@@ -3,7 +3,7 @@ module.exports = {
     darkMode: ["class"],
     content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html"
+    "./index.html"
   ],
   theme: {
   	extend: {
@@ -12,7 +12,18 @@ module.exports = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+  		fontFamily: {
+  			sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
+  		},
   		colors: {
+  			brand: {
+  				DEFAULT: '#133660',
+  				deep: '#0D2847',
+  				green: '#18B879',
+  				'green-text': '#0B7A4F',
+  				teal: '#00B6A5',
+  				gray: '#F4F4F4'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

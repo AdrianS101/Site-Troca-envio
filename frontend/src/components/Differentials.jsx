@@ -1,44 +1,52 @@
 import React from 'react';
-import { Clock, Home, Link2, Smile, Shield, TrendingUp } from 'lucide-react';
+import { Clock, Home, Link2, Smartphone, ShieldCheck } from 'lucide-react';
 
-const Differentials = () => {
-  const differentials = [
-    { icon: Clock, title: 'Economia de tempo', description: 'Recupere horas preciosas da sua semana. Sem deslocamentos desnecessários.' },
-    { icon: Home, title: 'Zero deslocamento', description: 'Tudo acontece no seu condomínio. Comodidade total para você e sua família.' },
-    { icon: Link2, title: 'Integração completa', description: 'Conectado com Mercado Livre, Shopee, Correios e principais transportadoras.' },
-    { icon: Smile, title: 'Experiência simples', description: 'Interface intuitiva e processo sem complicação. Você não precisa ser expert.' },
-    { icon: Shield, title: 'Segurança garantida', description: 'Seus pacotes protegidos do início ao fim com rastreamento completo.' },
-    { icon: TrendingUp, title: 'Disponibilidade 24/7', description: 'Envie quando quiser, sem depender de horário comercial.' },
-  ];
+const Icon24h = ({ className }) => (
+  <span className={`${className} flex items-center justify-center text-[13px] font-extrabold leading-none`}>24h</span>
+);
 
-  return (
-    <section id="diferenciais" className="py-16 sm:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold" style={{ color: '#133660' }}>
-            Por que escolher a trocaenvio?
-          </h2>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Diferenciais que transformam sua experiência logística
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 max-w-6xl mx-auto">
-          {differentials.map((diff, index) => (
-            <div key={index}
-              className="group p-6 sm:p-8 rounded-2xl bg-white border-2 border-gray-100 hover:border-transparent hover:shadow-xl transition-all duration-300"
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 182, 165, 0.15)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; }}>
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style={{ backgroundColor: 'rgba(0, 182, 165, 0.1)' }}>
-                <diff.icon className="h-7 w-7" style={{ color: '#00B6A5' }} />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3" style={{ color: '#133660' }}>{diff.title}</h3>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{diff.description}</p>
-            </div>
-          ))}
-        </div>
+const differentials = [
+  { icon: Clock, title: 'Economia de tempo', description: 'Recupere horas preciosas da sua semana. Sem deslocamentos desnecessários.' },
+  { icon: Home, title: 'Zero deslocamento', description: 'Tudo acontece no seu condomínio. Comodidade total para você e sua família.' },
+  { icon: Link2, title: 'Integração completa', description: 'Conectado com Mercado Livre, Shopee, Correios e principais transportadoras.' },
+  { icon: Smartphone, title: 'Experiência simples', description: 'Interface intuitiva e processo sem complicação. Você não precisa ser expert.' },
+  { icon: ShieldCheck, title: 'Segurança garantida', description: 'Seus pacotes protegidos do início ao fim com rastreamento completo.' },
+  { icon: Icon24h, title: 'Disponibilidade 24/7', description: 'Envie quando quiser, sem depender de horário comercial.' },
+];
+
+const Differentials = () => (
+  <section id="diferenciais" aria-labelledby="diferenciais-title" className="bg-brand-gray py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-3xl text-center" data-reveal>
+        <h2 id="diferenciais-title" className="text-[1.875rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-brand sm:text-[2.75rem]">
+          Por que escolher a TROCA<span className="text-brand-green-text">ENVIO</span>?
+        </h2>
+        <p className="mt-3 text-base text-slate-600 sm:text-lg">Diferenciais que transformam sua experiência logística</p>
       </div>
-    </section>
-  );
-};
+
+      <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        {differentials.map((d, i) => (
+          <li
+            key={d.title}
+            data-reveal
+            style={{ '--reveal-delay': `${(i % 3) * 80}ms` }}
+            className="group flex items-start gap-4 rounded-2xl bg-white p-6 shadow-[0_8px_28px_-20px_rgba(13,40,71,0.4)] transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(13,40,71,0.5)]"
+          >
+            <span className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-2 border-brand/15 text-brand transition-colors group-hover:border-brand-green group-hover:text-brand-green-text">
+              <d.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <div>
+              <h3 className="text-lg font-bold text-brand">{d.title}</h3>
+              <p className="mt-1 text-[15px] leading-relaxed text-slate-600">{d.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-6 text-center text-sm text-slate-500" data-reveal>
+        A disponibilidade 24/7 refere-se ao uso do locker para depósito. Coleta, atendimento e entrega não ocorrem 24 horas.
+      </p>
+    </div>
+  </section>
+);
 
 export default Differentials;

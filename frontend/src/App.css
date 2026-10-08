@@ -1,14 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
+    color: #0D2847;
 }
 
 .App {
@@ -16,77 +9,100 @@ body {
     background-color: #ffffff;
 }
 
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
 }
 
-/* Custom animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.animate-fadeInUp {
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.animate-fadeIn {
-    animation: fadeIn 0.3s ease-out;
-}
-
-/* Remove default button focus ring for mouse users */
-button:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Custom selection color */
-::selection {
-    background-color: rgba(0, 182, 165, 0.3);
-    color: #133660;
-}
-
-/* Smooth transitions for interactive elements */
-button, a {
-    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Ensure images load smoothly */
 img {
     display: block;
     max-width: 100%;
     height: auto;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
+::selection {
+    background-color: rgba(24, 184, 121, 0.3);
+    color: #0D2847;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+/* Foco visível consistente */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #18B879;
+    outline-offset: 3px;
+    border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #00B6A5;
-    border-radius: 5px;
+/* ---------- Revelação ao rolar ----------
+   Só esconde conteúdo quando o JS confirmou suporte e movimento permitido
+   (classe .motion-ok no <html>). Sem JS ou com redução de movimento,
+   tudo permanece visível. */
+.motion-ok [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition: opacity 600ms cubic-bezier(.2, .7, .2, 1), transform 600ms cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-ok [data-reveal="fade"] { transform: none; }
+.motion-ok [data-reveal="left"] { transform: translate3d(-24px, 0, 0); }
+.motion-ok [data-reveal="right"] { transform: translate3d(24px, 0, 0); }
+.motion-ok [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #133660;
+/* Abertura: entrada única ao carregar */
+@keyframes heroIn {
+    from { opacity: 0; transform: translate3d(0, 20px, 0); }
+    to { opacity: 1; transform: none; }
+}
+.motion-ok .hero-in {
+    animation: heroIn 640ms cubic-bezier(.2, .7, .2, 1) both;
+    animation-delay: var(--hero-delay, 0ms);
+}
+
+/* Botões: cor, seta e elevação discreta */
+.btn-arrow svg { transition: transform 200ms ease; }
+.btn-arrow:hover svg { transform: translateX(3px); }
+
+/* Profundidade sutil das fotos (somente desktop) */
+.parallax-photo { will-change: transform; }
+
+/* Mockup do app: flutuação lenta de até 6px no desktop */
+@keyframes phoneFloat {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -6px, 0); }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .phone-float { animation: phoneFloat 7s ease-in-out infinite; }
+}
+
+/* Carrossel de depoimentos no celular: scroll nativo com snap */
+.snap-row {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.snap-row::-webkit-scrollbar { display: none; }
+.snap-row > * { scroll-snap-align: start; }
+
+/* Espaço para a barra inferior do app e o botão do WhatsApp no celular,
+   para que nada cubra a última linha do rodapé */
+.pb-safe-bar {
+    padding-bottom: calc(144px + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 768px) {
+    /* Sem barra inferior; só o espaço do botão flutuante do WhatsApp */
+    .pb-safe-bar { padding-bottom: 72px; }
 }

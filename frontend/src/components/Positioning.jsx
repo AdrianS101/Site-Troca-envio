@@ -1,46 +1,71 @@
-import React from 'react';
-import { Heart } from 'lucide-react';
+import React, { useRef } from 'react';
+import { useParallax } from '../hooks/useReveal';
 
-const Positioning = () => {
+const stats = [
+  { value: '5h', label: 'economizadas por semana' },
+  { value: '24/7', label: 'Sempre disponível' },
+  { value: '0', label: 'filas ou esperas' },
+];
+
+// Foto da V1 (locker em uso). Ilustrativa: origem e fidelidade ao equipamento real não verificadas.
+const Photo = () => {
+  const photoRef = useRef(null);
+  useParallax(photoRef, 12);
   return (
-    <section className="py-20 sm:py-32 relative overflow-hidden">
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(19, 54, 96, 0.03) 0%, rgba(0, 182, 165, 0.05) 100%)' }}></div>
-      <div className="absolute top-20 right-20 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl opacity-10" style={{ backgroundColor: '#00B6A5' }}></div>
-      <div className="absolute bottom-20 left-20 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl opacity-10" style={{ backgroundColor: '#133660' }}></div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-          <Heart className="mx-auto h-12 sm:h-16 w-12 sm:w-16 mb-4 sm:mb-6" style={{ color: '#00B6A5' }} />
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight" style={{ color: '#133660' }}>
-            A TROCAENVIO não entrega pacotes.
-          </h2>
-          <p className="text-2xl sm:text-3xl sm:text-4xl font-semibold leading-relaxed" style={{ color: '#00B6A5' }}>
-            Ela devolve tempo para você viver o que realmente importa.
-          </p>
-          <div className="pt-4 sm:pt-8">
-            <p className="text-base sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Cada minuto que você economiza é uma oportunidade de estar com quem você ama, fazer o que gosta, ou simplesmente relaxar.
-              <span className="font-semibold" style={{ color: '#133660' }}> Nós cuidamos da logística, você cuida da vida.</span>
-            </p>
-          </div>
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-8 sm:pt-12 max-w-3xl mx-auto">
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-5xl font-bold" style={{ color: '#00B6A5' }}>5h</div>
-              <p className="text-gray-600 text-xs sm:text-base">economizadas por semana</p>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-5xl font-bold" style={{ color: '#00B6A5' }}>24/7</div>
-              <p className="text-gray-600 text-xs sm:text-base">Sempre disponível</p>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-3xl sm:text-5xl font-bold" style={{ color: '#00B6A5' }}>0</div>
-              <p className="text-gray-600 text-xs sm:text-base">filas ou esperas</p>
-            </div>
-          </div>
+    <div className="relative">
+      <div aria-hidden="true" className="absolute -right-4 -top-4 hidden h-24 w-24 rotate-[38deg] rounded-[24px] bg-brand-green lg:block" />
+      <div className="relative overflow-hidden rounded-[28px] shadow-[0_30px_60px_-28px_rgba(0,0,0,0.6)] ring-1 ring-white/10 lg:rounded-[36px] lg:rounded-tl-[96px]">
+        <div ref={photoRef} className="parallax-photo">
+          <picture>
+            <source type="image/webp" srcSet="/locker-em-uso-800.webp 800w, /locker-em-uso.webp 1195w" sizes="(min-width: 1024px) 520px, 100vw" />
+            <img
+              src="/locker-em-uso.webp"
+              width="1195"
+              height="896"
+              loading="lazy"
+              decoding="async"
+              alt="Imagem ilustrativa: pessoa guardando uma caixa em um locker TROCAENVIO branco, com o celular na mão"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </picture>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
+
+const Positioning = () => (
+  <section aria-labelledby="posicionamento-title" className="relative overflow-hidden bg-brand py-16 text-white sm:py-24">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand to-brand-deep" />
+    <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 hidden h-80 w-40 rotate-[38deg] rounded-[40px] bg-brand-green/80 lg:block" />
+
+    <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:px-8">
+      <div data-reveal>
+        <p className="text-base font-semibold text-white/80 sm:text-lg">A TROCAENVIO não entrega pacotes.</p>
+        <h2 id="posicionamento-title" className="mt-2 text-[1.875rem] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[2.75rem]">
+          Ela devolve tempo para você viver o que realmente importa.
+        </h2>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
+          Cada minuto que você economiza é uma oportunidade de estar com quem você ama, fazer o que gosta, ou simplesmente relaxar.{' '}
+          <strong className="font-semibold text-white">Nós cuidamos da logística, você cuida da vida.</strong>
+        </p>
+
+        <dl className="mt-10 grid grid-cols-3 divide-x divide-white/20">
+          {stats.map((s) => (
+            <div key={s.value} className="flex flex-col px-3 first:pl-0 sm:px-6">
+              <dt className="order-2 mt-1 text-xs leading-snug text-white/80 sm:text-base">{s.label}</dt>
+              <dd className="-order-1 text-3xl font-extrabold text-brand-green sm:text-5xl">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-5 text-xs text-white/60 sm:text-sm">24/7: acesso ao locker para depósito.</p>
+      </div>
+
+      <div data-reveal="right" style={{ '--reveal-delay': '120ms' }}>
+        <Photo />
+      </div>
+    </div>
+  </section>
+);
 
 export default Positioning;
