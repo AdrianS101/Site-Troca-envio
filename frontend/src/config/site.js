@@ -13,11 +13,15 @@ export const APP_STORES = {
 // Logo original (fundo claro removido, cores e proporção preservadas).
 export const LOGO_URL = '/logo-trocaenvio.png';
 
-export const WHATSAPP_URL = 'https://wa.me/5511930063996';
+// WhatsApp comercial (atendimento da Lohany). A mensagem inicial já vem preenchida.
+export const WHATSAPP_NUMBER = '5511915192560';
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  'Olá! Vim pelo site da TROCAENVIO e gostaria de mais informações.'
+)}`;
 
 export const CONTACT = {
-  phoneLabel: '(11) 93006-3996',
-  phoneHref: 'tel:+5511930063996',
+  phoneLabel: '(11) 91519-2560',
+  phoneHref: 'tel:+5511915192560',
   email: 'comercial@trocaenvio.com.br',
   location: 'São Paulo, Brasil',
   hours: 'Segunda a sexta, das 9h às 18h',
