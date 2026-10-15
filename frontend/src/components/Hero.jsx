@@ -57,7 +57,7 @@ const Hero = () => {
             style={{ '--hero-delay': '300ms' }}
           >
             <AppButton className="sm:min-w-[180px]" />
-            <WhatsAppLink>Quero a TROCAENVIO no meu condomínio</WhatsAppLink>
+            <WhatsAppLink message="Olá! Quero a TROCAENVIO no meu condomínio. Podem me passar mais informações?">Quero a TROCAENVIO no meu condomínio</WhatsAppLink>
           </div>
         </div>
 

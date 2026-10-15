@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
-import { APP_URL, WHATSAPP_URL, LOGO_URL as LOGO_SRC } from '../../config/site';
+import { APP_URL, LOGO_URL as LOGO_SRC, buildWhatsAppUrl, openWhatsAppChat } from '../../config/site';
 
 const base =
   'btn-arrow inline-flex items-center justify-center gap-2 rounded-full text-center font-semibold leading-tight py-2.5 min-h-[48px] px-6 text-[15px] sm:text-base ' +
@@ -26,18 +26,26 @@ export const AppButton = ({ children = 'Acessar o app', variant = 'primary', cla
   </a>
 );
 
-export const WhatsAppLink = ({ children, variant = 'outlineLight', icon = false, className = '', ...rest }) => (
+// Abre a janela de chat do WhatsApp dentro do site. O href fica como alternativa
+// (clique com Ctrl/Cmd, botão do meio ou JavaScript indisponível).
+export const WhatsAppLink = ({ children, message = '', variant = 'outlineLight', icon = false, className = '', ...rest }) => (
   <a
-    href={WHATSAPP_URL}
+    href={buildWhatsAppUrl(message || undefined)}
     target="_blank"
     rel="noopener noreferrer"
+    aria-haspopup="dialog"
+    onClick={(e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      openWhatsAppChat(message);
+    }}
     className={`${base} ${variants[variant]} ${className}`}
     {...rest}
   >
     {icon && <img src="/whatsapp-logo.webp" width="22" height="22" alt="" aria-hidden="true" className="h-[22px] w-[22px] flex-shrink-0 rounded-full" />}
     {children}
     <ChevronRight className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-    <span className="sr-only"> (WhatsApp, abre em nova aba)</span>
+    <span className="sr-only"> (abre o chat do WhatsApp)</span>
   </a>
 );
 

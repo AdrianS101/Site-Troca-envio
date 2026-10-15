@@ -15,9 +15,15 @@ export const LOGO_URL = '/logo-trocaenvio.png';
 
 // WhatsApp comercial (atendimento da Lohany). A mensagem inicial já vem preenchida.
 export const WHATSAPP_NUMBER = '5511915192560';
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  'Olá! Vim pelo site da TROCAENVIO e gostaria de mais informações.'
-)}`;
+export const WHATSAPP_DEFAULT_MESSAGE = 'Olá! Vim pelo site da TROCAENVIO e gostaria de mais informações.';
+export const buildWhatsAppUrl = (message = WHATSAPP_DEFAULT_MESSAGE) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+export const WHATSAPP_URL = buildWhatsAppUrl();
+
+// Abre a janela de chat do WhatsApp dentro do site (componente WhatsAppButton).
+export const WHATSAPP_OPEN_EVENT = 'trocaenvio:open-whatsapp';
+export const openWhatsAppChat = (message = '') =>
+  window.dispatchEvent(new CustomEvent(WHATSAPP_OPEN_EVENT, { detail: { message } }));
 
 export const CONTACT = {
   phoneLabel: '(11) 91519-2560',
