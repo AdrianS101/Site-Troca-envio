@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, MessageCircle } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { APP_URL, WHATSAPP_URL, LOGO_URL as LOGO_SRC } from '../../config/site';
 
 const base =
@@ -34,7 +34,7 @@ export const WhatsAppLink = ({ children, variant = 'outlineLight', icon = false,
     className={`${base} ${variants[variant]} ${className}`}
     {...rest}
   >
-    {icon && <MessageCircle className="h-5 w-5 flex-shrink-0" aria-hidden="true" />}
+    {icon && <img src="/whatsapp-logo.webp" width="22" height="22" alt="" aria-hidden="true" className="h-[22px] w-[22px] flex-shrink-0 rounded-full" />}
     {children}
     <ChevronRight className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
     <span className="sr-only"> (WhatsApp, abre em nova aba)</span>
