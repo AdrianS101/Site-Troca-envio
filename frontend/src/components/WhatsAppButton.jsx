@@ -99,8 +99,14 @@ const WhatsAppButton = () => {
         className={`wa-panel fixed inset-x-3 z-50 ${open ? 'flex' : 'hidden'} max-h-[calc(100dvh-180px)] flex-col overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_-20px_rgba(13,40,71,0.55)] ring-1 ring-black/5 bottom-[calc(156px+env(safe-area-inset-bottom,0px))] md:inset-x-auto md:bottom-[104px] md:right-6 md:max-h-[min(560px,calc(100vh-140px))] md:w-[370px]`}
       >
         <div className="flex items-center gap-3 bg-[#075E54] px-4 py-3.5 text-white">
-          <span className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-white text-lg font-bold text-[#075E54]">
-            L
+          <span className="relative h-11 w-11 flex-shrink-0">
+            <img
+              src="/lohany.webp"
+              width="44"
+              height="44"
+              alt="Foto da Lohany, atendimento TROCAENVIO"
+              className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30"
+            />
             <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#075E54] bg-[#25D366]" aria-hidden="true" />
           </span>
           <div className="min-w-0 flex-1">
