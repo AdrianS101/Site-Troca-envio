@@ -115,7 +115,7 @@ const HowItWorks = () => {
           <p className="text-xl font-bold text-brand sm:text-2xl">Pronto para começar?</p>
           <div className="mt-5 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <AppButton className="sm:min-w-[200px]" />
-            <WhatsAppLink variant="outlineDark">Falar com especialista</WhatsAppLink>
+            <WhatsAppLink variant="outlineDark" message="Olá! Gostaria de falar com um especialista da TROCAENVIO.">Falar com especialista</WhatsAppLink>
           </div>
         </div>
       </div>

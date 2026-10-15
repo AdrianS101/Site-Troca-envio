@@ -106,3 +106,54 @@ summary:focus-visible,
     /* Sem barra inferior; só o espaço do botão flutuante do WhatsApp */
     .pb-safe-bar { padding-bottom: 72px; }
 }
+
+/* ---------- Chat do WhatsApp ---------- */
+@keyframes waPulse {
+    0% { transform: scale(1); opacity: 0.55; }
+    80%, 100% { transform: scale(1.75); opacity: 0; }
+}
+.wa-pulse { animation: waPulse 2.6s cubic-bezier(.2, .6, .3, 1) infinite; }
+.wa-pulse-delay { animation-delay: 1.3s; }
+
+@keyframes waBadge {
+    0%, 70%, 100% { transform: scale(1); }
+    80% { transform: scale(1.25); }
+    90% { transform: scale(0.95); }
+}
+.wa-badge { animation: waBadge 3s ease-in-out infinite; }
+
+@keyframes waIconIn {
+    from { transform: rotate(-90deg) scale(0.6); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+.wa-icon-swap { animation: waIconIn 260ms cubic-bezier(.2, .8, .2, 1) both; }
+
+@keyframes waPanelIn {
+    from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.96); }
+    to { opacity: 1; transform: none; }
+}
+.wa-panel { transform-origin: bottom right; animation: waPanelIn 240ms cubic-bezier(.2, .8, .2, 1) both; }
+
+@keyframes waBubbleIn {
+    from { opacity: 0; transform: translate3d(-8px, 6px, 0); }
+    to { opacity: 1; transform: none; }
+}
+.wa-bubble-in { animation: waBubbleIn 360ms 140ms cubic-bezier(.2, .8, .2, 1) both; }
+
+@keyframes waTeaserIn {
+    from { opacity: 0; transform: translate3d(0, 10px, 0); }
+    to { opacity: 1; transform: none; }
+}
+.wa-teaser { animation: waTeaserIn 320ms cubic-bezier(.2, .8, .2, 1) both; }
+
+/* Fundo do chat no estilo WhatsApp */
+.wa-chat-bg {
+    background-color: #EFEAE2;
+    background-image: radial-gradient(rgba(7, 94, 84, 0.07) 1px, transparent 1px);
+    background-size: 18px 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wa-pulse { display: none; }
+    .wa-badge { animation: none; }
+}
