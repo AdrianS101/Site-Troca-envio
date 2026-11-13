@@ -41,7 +41,7 @@ Em 08/10/2026 o cliente validou os indicadores (5h, 24/7, 0 filas), a avaliaçã
 
 ## Imagens usadas
 
-- **Hero**: apresentação do locker TROCAENVIO preto (imagem do equipamento enviada pelo cliente, com fundo transparente: `locker-3d-*.webp`), com brilho verde, base luminosa e balões animados.
+- **Hero**: apresentação do locker TROCAENVIO preto (imagem do equipamento enviada pelo cliente, com fundo transparente: `locker-3d-*.webp`), com brilho verde, base luminosa e pop-ups de destaque que entram em sequência e piscam um de cada vez.
 - **"Sua logística resolvida"**: moradora no saguão (`locker-moradora.webp`).
 - **Bloco "tempo"**: `foto-locker-em-uso.jpg` da V1 (`locker-em-uso.webp`). A foto da mulher descansando da prévia não existe como arquivo separado.
 - **Seção do app**: captura original da tela de login do PWA enviada pelo cliente (`app-tela-login.webp`, 478×963).
