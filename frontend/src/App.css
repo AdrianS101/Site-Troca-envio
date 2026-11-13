@@ -426,6 +426,18 @@ summary:focus-visible,
     .hero-bubble { max-width: 172px; }
     .hero-bubble--main { max-width: 210px; font-size: 18px; }
 }
+/* Desloca locker e balões para a direita, afastando-os do texto principal */
+@media (min-width: 1280px) and (max-width: 1439px) {
+    .locker-stage { --cx: 55%; --locker-h: 470px; }
+    .hero-bubble { max-width: 156px; font-size: 13.5px; }
+    .hero-bubble--main { max-width: 190px; font-size: 17px; }
+}
+@media (min-width: 1366px) and (max-width: 1439px) {
+    .locker-stage { --cx: 58%; }
+}
+@media (min-width: 1440px) {
+    .locker-stage { --cx: 61%; }
+}
 
 /* ---------- Animações da abertura (só com movimento permitido) ---------- */
 @keyframes lockerEnter {
