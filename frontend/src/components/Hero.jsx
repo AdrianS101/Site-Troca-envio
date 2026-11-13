@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import { Building2, RotateCcw, Clock3 } from 'lucide-react';
+import { Send, RotateCcw, Clock3 } from 'lucide-react';
 import { AppButton, WhatsAppLink } from './site/Buttons';
 import { useReducedMotion } from '../hooks/useReveal';
 
 const BUBBLES = [
   { id: 'main', text: 'A sua agência de envios chegou.', main: true },
-  { id: 'envie', text: 'Envie do seu condomínio.', icon: Building2 },
+  { id: 'envie', text: 'Envie com facilidade.', icon: Send },
   { id: 'devolva', text: 'Devolva com praticidade.', icon: RotateCcw },
   { id: 'tempo', text: 'Mais tempo para você.', icon: Clock3 },
 ];
 
-// Apresentação do locker: brilho verde, base luminosa, flutuação e balões em sequência.
+// Apresentação do locker: brilho verde, base luminosa, flutuação e pop-ups que entram e piscam em sequência.
 // Posições e animações em App.css (.locker-stage); tudo fica visível sem animação.
 const LockerStage = () => {
   const tiltRef = useRef(null);
@@ -64,11 +64,11 @@ const LockerStage = () => {
           <li
             key={b.id}
             className={`hero-bubble hero-bubble--${b.id} ${b.main ? 'hero-bubble--main' : ''}`}
-            style={{ '--d': `${1000 + i * 700}ms`, '--bob': `${4.6 + i * 0.5}s` }}
+            style={{ '--d': `${900 + i * 550}ms`, '--blink': `${3200 + i * 1500}ms` }}
           >
             <span className="hero-bubble-card">
-              <span className="hero-bubble-dots" aria-hidden="true"><i /><i /><i /></span>
               <span className="hero-bubble-content">
+                {b.main && <span className="hero-bubble-live" aria-hidden="true" />}
                 {b.icon && (
                   <span className="hero-bubble-icon" aria-hidden="true">
                     <b.icon className="h-4 w-4" strokeWidth={2.25} />
